@@ -3,7 +3,7 @@
   <title>弋山客</title>
   
   <subtitle>关注科技人文 &amp; 记录生活点滴</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/feed.xml" rel="self"/>
   
   <link href="wissx.github.io/"/>
   <updated>2018-12-15T17:40:01.716Z</updated>
@@ -122,9 +122,9 @@
     </summary>
     
     
-      <category term="iPhone" scheme="wissx.github.io/tags/iPhone/"/>
-    
       <category term="软件" scheme="wissx.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="iPhone" scheme="wissx.github.io/tags/iPhone/"/>
     
   </entry>
   
