@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>弋山客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="弋山客">
+<meta property="og:url" content="wissx.github.io/index.html">
+<meta property="og:site_name" content="弋山客">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="弋山客">
+  
+    <link rel="alternate" href="/atom.xml" title="弋山客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">弋山客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">关注科技人文 &amp; 记录生活点滴</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/关于/">关于</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="wissx.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Github + Hexo 搭建个人博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/08/Github + Hexo 搭建个人博客/" class="article-date">
+  <time datetime="2018-12-07T16:00:00.000Z" itemprop="datePublished">2018-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/08/Github + Hexo 搭建个人博客/">Github + Hexo 搭建个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 38 -->
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Hexo 新手写的新手教程，记录自己搭建 Hexo 的过程，所有信息均来自互联网</p>
+<p>Hexo 官方中文教程：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a> （不太懂，只看了一点）</p>
+<p>对 Hexo 执行的终端命令都是在 blog 目录下执行（cd blog）</p>
+<p>网站配置文件：./blog/_config.yml</p>
+<p>主题配置文件：./blog/themes/landscape/_config.yml</p>
+<p>我是在 Mac 上搭建的</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>安装 Git 和 Node.js</li>
+<li>安装 Hexo</li>
+<li>注册 GitHub</li>
+<li>主题配置</li>
+<li>发布文章</li>
+<li>绑定域名</li>
+</ul>
+<h1 id="一、安装-Git-和-Node-js"><a href="#一、安装-Git-和-Node-js" class="headerlink" title="一、安装 Git 和 Node.js"></a>一、安装 Git 和 Node.js</h1><p>下载 Git 并安装：<a href="https://www.git-scm.com/downloads" target="_blank" rel="noopener">https://www.git-scm.com/downloads</a></p>
+<p>下载 Node.js 并安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<p>打开终端执行命令：</p>
+<p><code>git  --version</code></p>
+<p><code>node -v</code></p>
+<p><code>npm -v</code></p>
+<p>如果都出现版本号，说明安装成功。</p>
+<h1 id="二、安装-Hexo"><a href="#二、安装-Hexo" class="headerlink" title="二、安装 Hexo"></a>二、安装 Hexo</h1><p>终端执行命令（会在用户目录下创建 blog 文件夹，可自定义）</p>
+<p><code>sudo npm install -g hexo-cli</code></p>
+<p><code>hexo init blog</code></p>
+<p><code>cd blog</code></p>
+<p><code>npm install</code></p>
+<p><code>hexo generate</code></p>
+<p><code>hexo server</code></p>
+<p>最后两条可简化成一条 <code>hexo s -g</code>（本地部署）</p>
+<p>看到 “INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.” 字样就表示已经生成网页文件并开启了本地服务器，现在浏览器打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览博客。（重设端口：<code>hexo -p 5000 server</code>）</p>
+<h1 id="三、注册-GitHub"><a href="#三、注册-GitHub" class="headerlink" title="三、注册 GitHub"></a>三、注册 GitHub</h1><p>登陆 GitHub 账号，点击右上角用户头像旁的 + 新建仓库 new repository，仓库名称 Repository name 必须为”你的GitHub用户名.github.io”，如  wissx.github.io。（这里我犯错了，导致出现问题）</p>
+<p>复制你的仓库地址，例如：<a href="https://github.com/wissx/wissx.github.io.git" target="_blank" rel="noopener">https://github.com/wissx/wissx.github.io.git</a></p>
+<p>用代码编辑器（推荐 Sublime）打开网站配置文件 _config.yml，编辑最下面的 deploy 代码</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/wissx/wissx.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>repository 后面是你的仓库地址，其他一致，注意空格。</p>
+<p>打开终端在 blog 目录执行命令</p>
+<p><code>hexo generate</code></p>
+<p><code>hexo deploye</code></p>
+<p>上面两条可简化成</p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<p>顺利的话可以成功访问你的博客地址 <a href="https://wissx.github.io">https://wissx.github.io</a></p>
+<p>若执行 <code>hexo g</code> 出错则执行 <code>npm install hexo --save</code>，若执行 <code>hexo d</code> 出错则执行 <code>npm install hexo-deployer-git --save</code>，再执行 <code>hexo g</code> 和 <code>hexo d</code>。</p>
+<p>但我执行 <code>hexo d</code> 后遇到一个接一个的错误，网上查方法解决，一直出现各种不同的错误，搞了两三个小时，都疯了。</p>
+<p>如果你碰到错误，看一下代码意思，复制代码在网上查解决方法，真不能急，因为没用。</p>
+<p>我最后成功解决的方法是：<br>把 GitHub 仓库名改成相同的用户名，我原先并非一致。<br>在 GitHub 帐户设置里取消邮件隐私保护 Keep my email address private。<br>删除 blog 目录下隐藏文件夹 .deploy_git。</p>
+<p>再执行</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<p>清除缓存并部署服务器，然后打开 <a href="https://wissx.github.io">https://wissx.github.io</a> 成功。 </p>
+<h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>以 landscape 为例作修改，其他主题应该也差不多，请自行谷歌。</p>
+<h2 id="1、添加博客基本信息"><a href="#1、添加博客基本信息" class="headerlink" title="1、添加博客基本信息"></a>1、添加博客基本信息</h2><p>打开网站配置文件修改下列参数</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">博客名称</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">博客副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">博客描述</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">博客关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">你的名字</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"></span><br><span class="line"><span class="attr">url:</span> <span class="string">你的博客网址</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、配置主题样式"><a href="#2、配置主题样式" class="headerlink" title="2、配置主题样式"></a>2、配置主题样式</h2><p>打开主题配置文件 _config.yml 修改下列参数</p>
+<h3 id="2-1、修改顶部菜单"><a href="#2-1、修改顶部菜单" class="headerlink" title="2.1、修改顶部菜单"></a>2.1、修改顶部菜单</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">主页:</span> <span class="string">/</span></span><br><span class="line">  <span class="string">关于:</span> <span class="string">/关于/</span></span><br><span class="line">  <span class="string">工作:</span> <span class="string">/tags/工作/</span></span><br><span class="line">  <span class="string">生活:</span> <span class="string">/tags/生活/</span></span><br><span class="line">  <span class="string">归档:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">rss:</span> <span class="string">/atom.xml</span></span><br></pre></td></tr></table></figure>
+<p>这是列在顶部的菜单页面，”关于”是自定义页面，需要创建相应的页面，工作、生活是标签页，只要你发布对应标签的文章就会自动呈现。</p>
+<h3 id="2-2、修改边栏展示"><a href="#2-2、修改边栏展示" class="headerlink" title="2.2、修改边栏展示"></a>2.2、修改边栏展示</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar</span></span><br><span class="line"><span class="attr">sidebar:</span> <span class="string">right</span></span><br><span class="line"><span class="attr">widgets:</span></span><br><span class="line"><span class="comment">#- category</span></span><br><span class="line"><span class="comment">#- tag</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">links</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">recent_posts</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tagcloud</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">archive</span></span><br></pre></td></tr></table></figure>
+<p>边栏可以自定义，我新增了一个 links 边栏，放一些外部链接。</p>
+<p>注意坑，默认主题中菜单里的归档是 archives，边栏里的归档是 archive。</p>
+<p>打开 blog/themes/landscape/layout/_widget 目录，复制 archive.ejs 文件为副本，改名为 links.ejs，找到代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;&lt;%= __(&apos;archive_a&apos;) %&gt;&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">      &lt;%- list_archives(&#123;show_count: theme.show_count, type: theme.archive_type&#125;) %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;链接&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;https://wissx.github.io/关于/&quot; title=&quot;about&quot;&gt;关于我&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;http://wissx.github.io/atom.xml&quot; title=&quot;rss&quot;&gt;RSS 订阅&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;dd&gt;&lt;img src=&quot;https://imgsa.baidu.com/forum/w%3D580/sign=8ff1b3caf6f2b211e42e8546fa816511/59af8ddda144ad34c64b523edda20cf430ad8524.jpg&quot; width=&quot;220&quot; height=&quot;100&quot; alt=&quot;&quot;&gt;&lt;/dd&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>用 li 或 dd 修改其中的内容，放你想放的链接或图片。</p>
+<h3 id="2-3、添加博客图标"><a href="#2-3、添加博客图标" class="headerlink" title="2.3、添加博客图标"></a>2.3、添加博客图标</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span> <span class="string">/favicon.png</span></span><br></pre></td></tr></table></figure>
+<p>找一个像素 128*128 的小图标作为博客图标，改名放到 blog/source 目录下。</p>
+<h2 id="3、修改博客顶部图片"><a href="#3、修改博客顶部图片" class="headerlink" title="3、修改博客顶部图片"></a>3、修改博客顶部图片</h2><p>打开 blog/themes/landscape/source/css/_variables.styl 文件，更改图片，这里可修改标题与图片大小。</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Header</span></span><br><span class="line">logo-size = <span class="number">50px</span></span><br><span class="line">subtitle-size = <span class="number">18px</span></span><br><span class="line">banner-<span class="attribute">height</span> = <span class="number">200px</span></span><br><span class="line"><span class="comment">//banner-url = "images/banner.jpg"（用微博链接加载更快）</span></span><br><span class="line">banner-url = <span class="string">"https://ws3.sinaimg.cn/large/006tNbRwgy1fxyfhk640mj31ll0u01hl.jpg"</span></span><br></pre></td></tr></table></figure>
+<p>自己找个喜欢的图片，改名后复制到 blog/themes/landscape/source/css/images 目录替换原图。</p>
+<h2 id="4、替换-Google-的-jQuery-源"><a href="#4、替换-Google-的-jQuery-源" class="headerlink" title="4、替换 Google 的 jQuery 源"></a>4、替换 Google 的 jQuery 源</h2><p>打开 blog/themes/landscape/layout/_partial/after-footer.ejs 文件，找到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4、安装其他主题"><a href="#4、安装其他主题" class="headerlink" title="4、安装其他主题"></a>4、安装其他主题</h2><p>以 NexT 为例，修改网站配置文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<p>终端执行命令</p>
+<p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
+<p><code>hexo s</code></p>
+<p>打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可预览效果</p>
+<p>NexT 是站内本地搜索，landscape 是引用谷歌搜索，这一点 landscape 很讨厌。</p>
+<p>想移植 NexT 主题的站内搜索功能，还没成功，看不太懂教程…</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/63431e5ee944" target="_blank" rel="noopener">https://www.jianshu.com/p/63431e5ee944</a></li>
+<li><a href="https://www.jianshu.com/p/685bf59cde5e" target="_blank" rel="noopener">https://www.jianshu.com/p/685bf59cde5e</a></li>
+</ul>
+<h1 id="五、发布文章和添加页面"><a href="#五、发布文章和添加页面" class="headerlink" title="五、发布文章和添加页面"></a>五、发布文章和添加页面</h1><p>新建文章</p>
+<p><code>hexo new post 文章标题</code></p>
+<p>在 blog/source/_posts/ 会看到新建的文章，找一个 Markdown 编辑器写好内容。</p>
+<p>新建页面</p>
+<p><code>hexo new page 关于</code></p>
+<p>blog/source/关于/index.md 就是”关于”页面，编辑你的内容。</p>
+<p>配置网站、配置主题、写文章或编辑页面，完成后都执行命令</p>
+<p><code>hexo s</code></p>
+<p>再打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览博客，没问题就执行命令上传到服务器</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<h1 id="六、绑定个人域名"><a href="#六、绑定个人域名" class="headerlink" title="六、绑定个人域名"></a>六、绑定个人域名</h1><p>首先你得有一个域名，并在域名设置里把 DNS 服务器改为 DNSPOD 的 DNS 地址，f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
+<p>在 blog\source 文件夹下创建文件 CNAME，无后缀名，里面写上你的个人域名，再执行命令</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<p>去下面网址查询你 Hexo 博客的 IP，例如查询 wissx.github.io 得到 185.199.110.153</p>
+<p>IP 查询：<a href="http://ip.tool.chinaz.com/、https://www.ipip.net/ip.html" target="_blank" rel="noopener">http://ip.tool.chinaz.com/、https://www.ipip.net/ip.html</a></p>
+<p>或者在终端 ping 你的网址也能得到 IP</p>
+<p>使用 DNSPOD 进行域名解析：<a href="https://www.dnspod.cn/console/dns" target="_blank" rel="noopener">https://www.dnspod.cn/console/dns</a></p>
+<p>添加记录类型 A 和 CHAME，如图</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fy7crcboifj30m00ad0t0.jpg" alt=""></p>
+<p>生效时间：0-72小时，生效之后可用个人域名访问架设在 Github 的 Hexo 博客，Github 域名也能访问</p>
+<h1 id="七、功能配置"><a href="#七、功能配置" class="headerlink" title="七、功能配置"></a>七、功能配置</h1><h2 id="1、配置-RSS"><a href="#1、配置-RSS" class="headerlink" title="1、配置 RSS"></a>1、配置 RSS</h2><p>执行命令</p>
+<p><code>npm install hexo-generator-feed</code></p>
+<p>打开网站配置文件，添加下列配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">    limit:</span> <span class="number">15</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、配置站内搜索功能"><a href="#2、配置站内搜索功能" class="headerlink" title="2、配置站内搜索功能"></a>2、配置站内搜索功能</h2><p><code>npm install hexo-generator-searchdb --save</code></p>
+<p>编辑网站配置文件，新增以下内容到最底部：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></span><br><span class="line"><span class="attr">  field:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">  format:</span> <span class="string">html</span></span><br><span class="line"><span class="attr">  limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<p>编辑主题配置文件，启用本地搜索功能：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>完成这两点还不够，想要站内搜索，要么移植 NexT 主题的本地搜索功能，要么配置谷歌百度收录，用搜索引擎来实现站内搜索，后者更简单。</p>
+<p>本地搜索我搞不定，搜索引擎我不想搞，就让它成为我的遗憾吧。</p>
+<h1 id="八、结尾"><a href="#八、结尾" class="headerlink" title="八、结尾"></a>八、结尾</h1><p>我不准备给博客配置评论分享、谷歌百度收录之类的，所以我不写这些教程了，网上有很多可参考的；</p>
+<p>颜色字体美化之类的我也不折腾了，但标题可以修改一下大小与颜色。</p>
+<p>这两个文件里可以修改博客标题 LOGO 的样式<br>blog/themes/landscape/source/css/_variables.styl （修改博客顶部图片中已操作）<br>blog/themes/landscape/source/css/_partial/header.styl</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">text-decoration</span>: none</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">380</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0.5px</span> <span class="number">0.5px</span> <span class="number">#FDD835</span></span><br><span class="line"></span><br><span class="line">#logo</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: logo-size</span><br><span class="line">  <span class="attribute">line-height</span>: logo-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">5px</span></span><br></pre></td></tr></table></figure>
+<p>基于各种原因，这个教程有很多遗憾，但也差不多，从0到1算是完成了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpppzebh00338nhgu3tf6sm8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-RSS 复兴 - 从认识到使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/08/RSS 复兴 - 从认识到使用/" class="article-date">
+  <time datetime="2018-09-07T16:00:00.000Z" itemprop="datePublished">2018-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/08/RSS 复兴 - 从认识到使用/">RSS 复兴 - 从认识到使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 37 -->
+<p>不知你是否听过 RSS，相信多数人是没听过的，这是一种古老的技术，这几年快绝迹了，最近一直在喊的“RSS 复兴”纯属意淫，在各大巨头封闭内容圈用户的生态下，内容创作者转向微信公众号的时代里（微信公众号不提供 RSS），还有人知道 RSS 就不错的了，使用人数更是少，下面我来普yi及yin一下。</p>
+<h1 id="一、什么是-RSS"><a href="#一、什么是-RSS" class="headerlink" title="一、什么是 RSS"></a>一、什么是 RSS</h1><p>RSS 使用 XML 标准来共享内容，把网站的内容聚合一起输出给接收方，简单的说就是内容提供方打包文章内容推送出去，我们订阅一个 RSS 地址，就能获取内容了。<br>RSS 内容可以是文章、视频、音频、微博动态流等各种形式的内容，一般是指文章。</p>
+<p>用人话来说就是在一个地方看不同网站的内容，这个地方是指 RSS 阅读器。</p>
+<p>RSS 的流行是由 <a href="https://www.google.com/reader/about/" target="_blank" rel="noopener">Google Reader</a> 带起来的，最火的时候应该是08到12年，我是在 Google Reader 13年关闭后才接触 RSS 的，之前并不知道这个东西，我那个时候用的是鲜果阅读器，在14年鲜果也关闭了，微博微信流行起来后，RSS 就落寞了，用户越来越少，我是用过了才知道 RSS 那么的好用，也一直用到现在，订阅的内容不多，才20个左右，不过每天都能收到文章更新，真好。</p>
+<h1 id="二、什么是-RSS-服务商和阅读器"><a href="#二、什么是-RSS-服务商和阅读器" class="headerlink" title="二、什么是 RSS 服务商和阅读器"></a>二、什么是 RSS 服务商和阅读器</h1><p>RSS 服务商就是收集各种网站提供的 RSS 内容，用户订阅后就可以接收内容，还可以多设备多平台同步。</p>
+<p>RSS 阅读器是用来阅读文章的，登陆 RSS 服务商的帐号，订阅内容就会同步到阅读器里。</p>
+<p>RSS 服务商会有官方的阅读器，用来登陆自家帐号接收订阅内容并阅读。</p>
+<p>很多第三方 RSS 阅读器可以不登陆服务商帐号，用本地订阅 RSS，本地订阅不能同步，我是不会选择的。</p>
+<p>有些第三方 RSS 阅读器可以登陆多个服务商帐号，不同的服务商会有不同的服务和功能，用同一个阅读器则可以保证一致的阅读体验。</p>
+<p>服务商是用来订阅内容的，阅读器是用来看文章的。</p>
+<p>服务商和阅读器的功能会有重叠，之间的关系有一些混乱。</p>
+<h1 id="三、用-RSS-服务商-Feedly-来订阅内容"><a href="#三、用-RSS-服务商-Feedly-来订阅内容" class="headerlink" title="三、用 RSS 服务商 Feedly 来订阅内容"></a>三、用 RSS 服务商 Feedly 来订阅内容</h1><p><a href="http://www.feedly.com" target="_blank" rel="noopener">Feedly</a> 是个值得推荐的 RSS 服务商，也是我在用的 RSS 服务商，支持各大平台。<br>有优秀的官方阅读器，还有许多第三方 RSS 阅读器。</p>
+<p>在这个页面可以看到支持 Feedly 的平台和阅读器 <a href="https://www.feedly.com/apps.html" target="_blank" rel="noopener">Feedly App Center</a>。</p>
+<p>在这个页面可以看到用于代替 Google Reader 的阅读器 <a href="https://alternativeto.net/software/google-reader/" target="_blank" rel="noopener">Alternatives to Google Reader for all platforms</a></p>
+<p>注册 Feedly 登陆后，直接在 Feedly  App 搜索栏搜索想要订阅的网站，网页版则是点左下方的添加内容来搜索想要订阅的网站，或者输入网站的 RSS 地址来订阅，提供 RSS 的网站都会把 RSS 地址放在显眼的地方，在网站的最下方、右边或其他页面可以找到，一般和微信微博放在一起。</p>
+<p>我推荐两个网站 <a href="https://sspai.com/feed" target="_blank" rel="noopener">少数派</a>、<a href="http://liqi.io/feed/" target="_blank" rel="noopener">利器</a> 给大家订阅，当然也可以订阅我的博客 <a href="http://wantox.com/feed" target="_blank" rel="noopener">弋山客</a>，但我很久才更新一次，都不好意思推荐，囧。</p>
+<p>想订阅更多内容，可以找自己喜欢的网站、博客，或上网搜索“值得订阅的RSS”，订阅数量不易过多，一天更新几十篇文章的也不要订阅，内容太多看不完会厌恶，只订阅最值得订阅的，每天把内容看完。</p>
+<p>对于 RSS 我得说一句，用习惯了微信公众号，改用 RSS，还要自己去找网站的 RSS 地址，相信没多少人愿意学习这么复杂的操作，而且很多网站已经不提供 RSS 输出了，落寞是正常的。<br>不过有一些小众网站，并没有公众号，坚持更新自己的网站并提供 RSS 输出，这是值得订阅的。</p>
+<p>还有个RSS 服务商也得推荐一下，就是 <a href="https://www.inoreader.com/?lang=zh_CN" target="_blank" rel="noopener">Inoreader</a>，也是个非常优秀的 RSS 服务商，有很多人推荐，<a href="https://sspai.com/post/27576" target="_blank" rel="noopener">不可替代的 RSS，比 Feedly 更好用的 Inoreader</a>，听说功能上比 Feedly 更强大，我没有用过，不过 Inoreader 的第三方阅读器比较少。</p>
+<p>Feedly 和 Inoreader 都有官方阅读器，推荐下载使用。</p>
+<p>这里有一篇非常专业的文章介绍 Feedly 和 Inoreader 之间的区别 <a href="https://sspai.com/post/44420" target="_blank" rel="noopener">2018 年主流 RSS 服务选哪家？Feedly、Inoreader 和 NewsBlur 全面横评</a>，和这位作者相比，我这种业余选手，只是各种吹水，乱七八糟的凑字数。</p>
+<h1 id="四、第三方-RSS-阅读器推荐"><a href="#四、第三方-RSS-阅读器推荐" class="headerlink" title="四、第三方 RSS 阅读器推荐"></a>四、第三方 RSS 阅读器推荐</h1><p>第三方阅读器我推荐 <a href="https://itunes.apple.com/us/app/reeder-3/id697846300?mt=8" target="_blank" rel="noopener">Reeder</a> 和 <a href="https://itunes.apple.com/us/app/fiery-feeds-rss-reader/id1158763303?mt=8" target="_blank" rel="noopener">Fiery Feeds</a>，他们都支持 Feedly 和 inoreader，还支持更多服务商和平台。</p>
+<p>iPhone 上我在用的是 Fiery Feeds，Mac 上我用的是 Leaf（收费的）。</p>
+<p>第三方 RSS 阅读器的操作界面和阅读体验都不相同，得自己用过才知道适合哪个，先用官方的阅读器熟悉使用流程后，再用第三方阅读器来体验区别，慢慢找到自己最喜欢的那款。</p>
+<p>安卓的第三方客户端我不熟悉，可以看看我上面两个阅读器介绍页面，代替 Google Reader 的阅读器，支持 Feedly 的阅读器，找一下安卓的，用官方的挺好。</p>
+<p>视频、播客、微博我不推荐用 RSS 阅读器来订阅，用起来不方便，还是用视频网站来看视频，微博客户端看微博，播客软件听播客比较方便。</p>
+<h1 id="五、RSS-阅读器体验对比"><a href="#五、RSS-阅读器体验对比" class="headerlink" title="五、RSS 阅读器体验对比"></a>五、RSS 阅读器体验对比</h1><p>没有。</p>
+<p>Feedly、Inoreader 和 Reeder、Fiery Feeds 自己去下载体验，这 TM 就是萝卜青菜。</p>
+<h1 id="六、RSS-高阶知识，制作-RSS-源"><a href="#六、RSS-高阶知识，制作-RSS-源" class="headerlink" title="六、RSS 高阶知识，制作 RSS 源"></a>六、RSS 高阶知识，制作 RSS 源</h1><p>很多网站不提供 RSS 输出，这个时候就需要制作 RSS 源，就是制作 RSS 地址，让我们来获取内容。</p>
+<ol>
+<li><p><a href="https://sspai.com/post/34320" target="_blank" rel="noopener">利用 Feed43，将任意网页制作成 RSS 订阅源</a></p>
+<ul>
+<li>以前做过，不过有些小问题，经常重复推送空白文章，可能是我制作不对，很久没用过了。</li>
+</ul>
+</li>
+<li><p><a href="https://diygod.me/3264/" target="_blank" rel="noopener">使用 RSS 订阅 bilibili up主和番剧</a></p>
+<ul>
+<li>视频我不用 RSS 订阅</li>
+<li>当然我不会阻止你用</li>
+</ul>
+</li>
+<li><p><a href="https://rss.lilydjwg.me/" target="_blank" rel="noopener">订阅知乎专栏和 v2ex 评论</a></p>
+<ul>
+<li>可以用一用</li>
+</ul>
+</li>
+<li><p><a href="https://docs.rsshub.app/" target="_blank" rel="noopener">RSSHub 制作各种 RSS 订阅源</a></p>
+</li>
+<li><p><a href="https://github.com/idealclover/Easy-to-RSS" target="_blank" rel="noopener">使用 Easy-to-RSS 订阅 RSSHub 支持的网站</a></p>
+<ul>
+<li>Easy-to-RSS 是 Chrome 浏览器插件，用来发现并订阅 RSSHub 支持的网站</li>
+<li>这俩搭配简直完美</li>
+<li>五星推荐，好好研究</li>
+<li>非常强大的 RSS 订阅服务</li>
+<li>给不提供 RSS 的各种网站制作 RSS 源</li>
+<li>多数网站只需要根据 RSSHub 的说明，替换用户名即可，非常方便</li>
+<li>RSSHub 是自建了 RSS 服务器</li>
+</ul>
+</li>
+<li><p>自建 RSS 服务器。</p>
+<ul>
+<li>没弄过，不会，逃。</li>
+</ul>
+</li>
+</ol>
+<h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><p>我非常讨厌大篇文章，太长看着很累，比较喜欢800字左右的文章，但不知为什么就这 RSS 我 TM 都写了这么多，草，生怕你们不懂，可能看完了你们还是不懂。</p>
+<p>ps：这是我第一篇用 Simplenote 写的文章。<br>pps：准备用 RSSHub 搭配 Easy-to-RSS 去订阅一些新站点了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2018/09/08/RSS 复兴 - 从认识到使用/" data-id="cjpppzea400058nhgmzejnini" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSS/">RSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-香港旅游交通指南" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/07/香港旅游交通指南/" class="article-date">
+  <time datetime="2018-04-06T16:00:00.000Z" itemprop="datePublished">2018-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/07/香港旅游交通指南/">香港旅游交通指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 36 -->
+<p>从深圳去香港在交通行程方面的一些介绍。<br>我是4月5号从广州坐火车去深圳住，4月6号一早去的香港，当天回的广州。</p>
+<p>#提前准备：</p>
+<ul>
+<li>通行证</li>
+<li>身份证（国内住宿乘车用）</li>
+<li>三五百港币和信用卡</li>
+<li>移动电源（非常刚需）</li>
+<li>淘宝买香港手机卡（13人民币，一天无限流量）口岸自取，到香港后再换到手机里。</li>
+</ul>
+<hr>
+<p>#出入境过关流程：<br>全程走旅客通道和自助通道（E通道）验证通行证和指纹。</p>
+<p>#深圳去香港<br>从深圳罗湖口岸走自助通道出境，到香港罗湖走人工通道入境（第一次），以后走自助通道入境。</p>
+<p>#香港回深圳<br>从香港落马洲走自助通道出境，到深圳福田口岸过两次自助通道入境，不知道为什么深圳这边要验证两次通行证，第一次是通行证+指纹，第二次是通行证。<br>这是我2018年4月6号出入境的情况。</p>
+<hr>
+<p>#香港地铁车票事项：<br>过关到香港地铁客务中心买八达通（150港币）和游客过境旅游票（100港币，适合罗湖、落马洲坐地铁的游客），淘宝买贵不推荐。</p>
+<p>八达通用来小额消费、电车、轮渡之类的很方便，过境旅游票用来长时间坐地铁比较划算，如果少坐地铁那只用八达通即可。</p>
+<p>如果回来是坐广九直通车或中港通巴士那就买游客全日通（65港币），可省35港币，都是一天随便无限次坐地铁，区别在于全日通不可用于罗湖站和落马洲站。</p>
+<p>坐飞机入境香港的有机场快线旅游票。</p>
+<hr>
+<p>#交通路线：<br>我手机装了四个 APP，谷歌地图、高德地图、12306、Airbnb。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq458g4y33j30yi0yi3z6.jpg" alt=""><br>谷歌高德查路线互补用，12306国内买火车票用，Airbnb 订房用。</p>
+<p>下载好城市轨道交通路线图到手机相册<br><a href="http://cs.gzmtr.com/ckfw/" target="_blank" rel="noopener">广州地铁线路图</a><br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq454b9ksgj31kw1aldy4.jpg" alt=""><br><a href="http://www.szmc.net/" target="_blank" rel="noopener">深圳地铁线路图</a><br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq454svj8zj31kw1aoqiu.jpg" alt=""><br><a href="http://www.mtr.com.hk/ch/customer/services/system_map.html" target="_blank" rel="noopener">香港地铁路线图</a><br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fq455vr7hvj31kw1677ec.jpg" alt=""><br>还有香港轻铁，和地铁一样用旅游票/全日通乘车，我没坐过。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq45xvkn0oj31kw0qke81.jpg" alt=""></p>
+<p><a href="https://www.hktramways.com/tc/interactive-map" target="_blank" rel="noopener">香港电车线路图</a><br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq456cian6j30qc06idfs.jpg" alt=""><br>有多条电车路线，但都共用轨道，电车终点站超过你要去的目的地即可上车。<br>后门上车前门下车支付车费2.3港币，刷八达通即可。</p>
+<p><a href="http://www.starferry.com.hk/tc/service" target="_blank" rel="noopener">香港轮渡图</a><br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq45a05oipj30p00gowg5.jpg" alt=""><br>尖沙咀码头坐船去中环或湾仔，景色很好值得一坐，才几块港币，刷八达通即可。</p>
+<p>我提前准备了这些东西，在行程中没有走错路上错车，都是快速准确到达想要去的目的地，希望对你也有帮助。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2018/04/07/香港旅游交通指南/" data-id="cjpppzeaw001v8nhg10khg7n0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游玩/">游玩</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/香港/">香港</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-My iPhone App" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/01/My iPhone App/" class="article-date">
+  <time datetime="2017-09-30T16:00:00.000Z" itemprop="datePublished">2017-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/01/My iPhone App/">My iPhone App</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 35 -->
+<h1 id="生活-工具类"><a href="#生活-工具类" class="headerlink" title="生活/工具类"></a>生活/工具类</h1><ul>
+<li>微信</li>
+<li>京东</li>
+<li>淘宝</li>
+<li>支付宝</li>
+<li>彩云天气</li>
+<li>印象笔记</li>
+<li>落格五笔</li>
+<li>即刻（新闻）</li>
+<li>小历（日历）</li>
+<li>Pin（剪贴板工具）</li>
+<li>Moke</li>
+<li>Tweetbot</li>
+<li>Telegram</li>
+<li>Instagram</li>
+<li>Overcast（播客）</li>
+<li>Fiery Feeds（RSS）</li>
+<li>TeeVee（美剧更新）</li>
+<li>Workflow（快速操作）</li>
+<li>Annotable（图片标注）</li>
+<li>SKRWT（照片校正）</li>
+<li>Piiic（拼长图）</li>
+<li>Price Tag（app 价格趋势）</li>
+<li>KeePass Touch（密码管理）</li>
+</ul>
+<h1 id="工作类"><a href="#工作类" class="headerlink" title="工作类"></a>工作类</h1><ul>
+<li>QQ（工作交流）</li>
+<li>WPS（文档办公）</li>
+<li>Trello（任务看板）</li>
+<li>坚果云（文档同步）</li>
+</ul>
+<p>这些是我常用的 app，还有一些自带的和理财类就不列了。</p>
+<p>才装这么一点 app，当果粉都没资格…</p>
+<p>把使用频率低的 app 放一个文件夹，只用一屏图标，操作简单明了，看着也清爽。</p>
+<p>想要 app 不烦人，还得修改一下 app 的通知规则。基本操作就是把不重要的、有广告的、无需通知的、超级烦人的 app 关闭通知或关闭某项通知功能，具体因人而异，因 app 而异，因 bug 而异。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fk2zcnkfwkj30yi1pc77s.jpg" alt=""></p>
+<p>这个主屏看着非常普通，一个亮眼的个性的 app 都没有，但使用上没什么不方便，留下最重要的就足够了。</p>
+<hr>
+<p>今年的苹果发布会没什么值得讲，观看直播时比往年少了些许兴奋与激动。</p>
+<p>iPhone 8 外观没区别，无线充电是个鸡肋，iOS 11 稳定性退步了，AR App 可能是唯一的乐趣。</p>
+<p>iPhone X 系统操作逻辑大改，像个工程机，售价近万…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2017/10/01/My iPhone App/" data-id="cjpppzea300048nhgvf2ns6np" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iPhone/">iPhone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Trello 任务管理流程" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/07/Trello 任务管理流程/" class="article-date">
+  <time datetime="2017-08-06T16:00:00.000Z" itemprop="datePublished">2017-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/07/Trello 任务管理流程/">Trello 我的任务管理流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 34 -->
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fiaft4y0lhj30zk0k00t6.jpg" alt=""></p>
+<p>如果你每天接收各种任务，处理各种事情，这个任务管理/登记流程也许值得一试。</p>
+<p>在 Trello 创建一个待办任务列表¹、一个任务封存列表²、几个任务分类列表³。</p>
+<p>每天把所有任务添加到待办列表，一个任务一个卡片，然后一个个去做，做完就移动到封存列表。</p>
+<p>待办任务当天没做完，下班前就在任务卡片上补充任务要点，这利于之后快速完成任务，并把任务分类，清空待办列表。</p>
+<p>第二天继续添加待办任务并处理之前未完成的分类任务。</p>
+<p>这套工作流程很像 To-Do List，但有个最大的区别是，这套流程没有铃声提醒功能，不用设置开始时间、完成时间、不用打勾来让任务消失，适合无固定完成时间、每日接任务、在最短时间完成、任务多且繁杂的工作。</p>
+<p>团队也可以使用这套流程，接到任务你就把它添加到待办列表，通知团队成员去完成任务，当天没完成的任务下班前就分类整理，并补充详细信息（方便完成任务），添加适合去完成此任务的成员，分类任务就让任务成员来跟进处理。</p>
+<p>任务流程这样就走通了。</p>
+<p>任务流程演变：</p>
+<p>最开始我在备忘录里记任务，发现管理很麻烦。</p>
+<p>后来改用 Trello 来分类记录任务，发现在接收任务时就进行任务列表分类是一件很没效率的事。<br>很多任务当天就能完成，不需要分类，完成后直接移动到封存列表即可。分类需要思考，需要补充信息让其更清晰，不然分类没有意义。</p>
+<p>现在把接收到的任务添加到待办列表，当天完成不了，再分类处理，工作效率高很多，操作流程也更简洁了。</p>
+<hr>
+<ol>
+<li>待办列表用作收集当天任务。</li>
+<li>封存列表用作归档以便日后方便查找。</li>
+<li>分类列表用于任务分类，建三个左右比较合适，分类让任务更清晰，同时缓解待办列表的任务数量。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2017/08/07/Trello 任务管理流程/" data-id="cjpppzea600098nhgn0yatoc7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ThinkVision X24 显示器上手" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/08/ThinkVision X24 显示器上手/" class="article-date">
+  <time datetime="2017-06-07T16:00:00.000Z" itemprop="datePublished">2017-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/08/ThinkVision X24 显示器上手/">ThinkVision X24 显示器上手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 33 -->
+<p>为给 MacBook Air 配一台显示器，看了 2K 显示器，看了 4K 显示器，还看了 21:9 显示器。</p>
+<p>4K 是不行的，因为我的 MacBook Air 核显不支持 4K 分辨率。</p>
+<p>常看到人说 2K 效果不好，当然价格也是比较贵的，有点鸡肋，便放弃了。</p>
+<p>一直想买 21:9 的显示器，合适价格的 21:9 显示器外观都难看，挑了好久，也没看中。（我很喜欢超宽屏）</p>
+<p>无意看到一款 1080P 的显示器，被漂亮的外观吸引了，窄边框，超薄机身，性感的底座，主要是价格合适。</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fgbt5yz59ej30rs0rsq4f.jpg" alt="ThinkVision X24"></p>
+<p>618期间正好降价，便剁手了。</p>
+<p>显示器箱子很大，有很厚的泡沫，保护得很好，机身很薄，要拿机身下部分或支架才稳妥。显示器配了 HDMI 线和 DP 线，自己买了根 Mini DP 转 DP 线。</p>
+<p>双屏显示我的 Mission Control 设置。</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fgd0i49n4xj30ib06r750.jpg" alt="Mission Control"></p>
+<p>美剧，浏览器，刷推，聊天，四个常用操作终于不用在一块 13 寸上频繁切换了，有了一块屏幕分担操作界面，观看体验好多了。</p>
+<p>总结就是：眼睛爽。</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fgd19ah6icj31kw16ou0x.jpg" alt="桌面"></p>
+<p>桌面图，光线差，拍出来的 MacBook 都脱皮了…将就看吧</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2017/06/08/ThinkVision X24 显示器上手/" data-id="cjpppzea500088nhgo00hxh7k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/显示器/">显示器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-值得买的苹果产品" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/06/值得买的苹果产品/" class="article-date">
+  <time datetime="2017-06-05T16:00:00.000Z" itemprop="datePublished">2017-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/06/值得买的苹果产品/">值得买的苹果产品</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 32 -->
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fgbsjs9opwj30r80j6wfa.jpg" alt="iMac Pro"></p>
+<p>苹果产品对我来说</p>
+<ul>
+<li>有一些是必要的</li>
+<li>有一些是非必要的</li>
+<li>有一些是不要的</li>
+<li>有一些是想要但没钱的 🙄</li>
+</ul>
+<p>我认为自己是果粉，由于勤俭节约（穷）只买过两台 iPhone 和一台 MacBook Air。(一个理性的果粉…)</p>
+<p>我认为 Mac 和 iPhone 是最值得买的苹果产品，电脑和手机绝大多数人都有，我为什么选择苹果，最大的原因是苹果产品的体验不流氓。</p>
+<p>iPhone 肯定买最新的。Mac 可以多考虑是要台式还是笔记本，我选择了 13 寸的 MacBook Air，足够。</p>
+<p>毕竟当时穷，加上自己用不上 Pro 的性能选择了 Air，现在看来 Pro 是更好的选择，因为我的新需求是要增加一个显示器，Pro 有独立显卡，选择显示器的空间大，可以考虑 4K 显示器什么的。</p>
+<p>iPad 对我来说就是非必要的，同为 iOS 系统，iPhone 已足够。虽然 iPad 有很优秀的特性，但我不怎么喜欢平板设备。</p>
+<p>而 Apple Watch 这种装饰品是我不需要的，现在也就两个功能，健身数据和查看通知，实在没兴趣。</p>
+<p>我不喜欢手表、戒指、手链、项链等没什么用的装饰品，戴在身上不自在，甚至包括围巾。</p>
+<p>只有 iMac 是想要但没钱买的产品，毕竟不是刚需，因为我已经有 MacBook Air 了。</p>
+<p>有一台显示器看中很久了，趁着 618 剁手！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="wissx.github.io/2017/06/06/值得买的苹果产品/" data-id="cjpppzeai000u8nhgj7exi2xp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple/">Apple</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+	<li><a href="https://twitter.com/_wissx" title="twitter">Twitter</a></li>
+	<li><a href="https://www.instagram.com/_wissx/" title="instagram">Instagram</a></li>
+        <li><a href="https://wissx.github.io/about/" title="about">关于我</a></li>
+        <li><a href="https://wissx.github.io/atom.xml" title="rss">RSS 订阅</a></li>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/08/Github + Hexo 搭建个人博客/">Github + Hexo 搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/08/RSS 复兴 - 从认识到使用/">RSS 复兴 - 从认识到使用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/07/香港旅游交通指南/">香港旅游交通指南</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/01/My iPhone App/">My iPhone App</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/07/Trello 任务管理流程/">Trello 我的任务管理流程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apple/" style="font-size: 13.33px;">Apple</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/RSS/" style="font-size: 10px;">RSS</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/iPhone/" style="font-size: 16.67px;">iPhone</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/产品/" style="font-size: 13.33px;">产品</a> <a href="/tags/兴趣/" style="font-size: 10px;">兴趣</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/团队/" style="font-size: 10px;">团队</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/广州/" style="font-size: 10px;">广州</a> <a href="/tags/微信/" style="font-size: 13.33px;">微信</a> <a href="/tags/微博/" style="font-size: 10px;">微博</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/情怀/" style="font-size: 10px;">情怀</a> <a href="/tags/手机/" style="font-size: 13.33px;">手机</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/播客/" style="font-size: 10px;">播客</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/早餐/" style="font-size: 10px;">早餐</a> <a href="/tags/显示器/" style="font-size: 10px;">显示器</a> <a href="/tags/游玩/" style="font-size: 13.33px;">游玩</a> <a href="/tags/社交/" style="font-size: 13.33px;">社交</a> <a href="/tags/节日/" style="font-size: 10px;">节日</a> <a href="/tags/软件/" style="font-size: 16.67px;">软件</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/香港/" style="font-size: 10px;">香港</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 wiss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/关于/" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

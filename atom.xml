@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>弋山客</title>
+  
+  <subtitle>关注科技人文 &amp; 记录生活点滴</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="wissx.github.io/"/>
+  <updated>2018-12-15T08:10:01.308Z</updated>
+  <id>wissx.github.io/</id>
+  
+  <author>
+    <name>wiss</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github + Hexo 搭建个人博客</title>
+    <link href="wissx.github.io/2018/12/08/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/</id>
+    <published>2018-12-07T16:00:00.000Z</published>
+    <updated>2018-12-15T08:10:01.308Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 38 --><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Hexo 新手写的新手教程，记录自己搭建 Hexo 的过程，所有信息均来自互联网</p><p>Hexo 官方中文教程：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a> （不太懂，只看了一点）</p><p>对 Hexo 执行的终端命令都是在 blog 目录下执行（cd blog）</p><p>网站配置文件：./blog/_config.yml</p><p>主题配置文件：./blog/themes/landscape/_config.yml</p><p>我是在 Mac 上搭建的</p><h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul><li>安装 Git 和 Node.js</li><li>安装 Hexo</li><li>注册 GitHub</li><li>主题配置</li><li>发布文章</li><li>绑定域名</li></ul><h1 id="一、安装-Git-和-Node-js"><a href="#一、安装-Git-和-Node-js" class="headerlink" title="一、安装 Git 和 Node.js"></a>一、安装 Git 和 Node.js</h1><p>下载 Git 并安装：<a href="https://www.git-scm.com/downloads" target="_blank" rel="noopener">https://www.git-scm.com/downloads</a></p><p>下载 Node.js 并安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p><p>打开终端执行命令：</p><p><code>git  --version</code></p><p><code>node -v</code></p><p><code>npm -v</code></p><p>如果都出现版本号，说明安装成功。</p><h1 id="二、安装-Hexo"><a href="#二、安装-Hexo" class="headerlink" title="二、安装 Hexo"></a>二、安装 Hexo</h1><p>终端执行命令（会在用户目录下创建 blog 文件夹，可自定义）</p><p><code>sudo npm install -g hexo-cli</code></p><p><code>hexo init blog</code></p><p><code>cd blog</code></p><p><code>npm install</code></p><p><code>hexo generate</code></p><p><code>hexo server</code></p><p>最后两条可简化成一条 <code>hexo s -g</code>（本地部署）</p><p>看到 “INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.” 字样就表示已经生成网页文件并开启了本地服务器，现在浏览器打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览博客。（重设端口：<code>hexo -p 5000 server</code>）</p><h1 id="三、注册-GitHub"><a href="#三、注册-GitHub" class="headerlink" title="三、注册 GitHub"></a>三、注册 GitHub</h1><p>登陆 GitHub 账号，点击右上角用户头像旁的 + 新建仓库 new repository，仓库名称 Repository name 必须为”你的GitHub用户名.github.io”，如  wissx.github.io。（这里我犯错了，导致出现问题）</p><p>复制你的仓库地址，例如：<a href="https://github.com/wissx/wissx.github.io.git" target="_blank" rel="noopener">https://github.com/wissx/wissx.github.io.git</a></p><p>用代码编辑器（推荐 Sublime）打开网站配置文件 _config.yml，编辑最下面的 deploy 代码</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/wissx/wissx.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure><p>repository 后面是你的仓库地址，其他一致，注意空格。</p><p>打开终端在 blog 目录执行命令</p><p><code>hexo generate</code></p><p><code>hexo deploye</code></p><p>上面两条可简化成</p><p><code>hexo g</code></p><p><code>hexo d</code></p><p>顺利的话可以成功访问你的博客地址 <a href="https://wissx.github.io">https://wissx.github.io</a></p><p>若执行 <code>hexo g</code> 出错则执行 <code>npm install hexo --save</code>，若执行 <code>hexo d</code> 出错则执行 <code>npm install hexo-deployer-git --save</code>，再执行 <code>hexo g</code> 和 <code>hexo d</code>。</p><p>但我执行 <code>hexo d</code> 后遇到一个接一个的错误，网上查方法解决，一直出现各种不同的错误，搞了两三个小时，都疯了。</p><p>如果你碰到错误，看一下代码意思，复制代码在网上查解决方法，真不能急，因为没用。</p><p>我最后成功解决的方法是：<br>把 GitHub 仓库名改成相同的用户名，我原先并非一致。<br>在 GitHub 帐户设置里取消邮件隐私保护 Keep my email address private。<br>删除 blog 目录下隐藏文件夹 .deploy_git。</p><p>再执行</p><p><code>hexo clean</code></p><p><code>hexo g</code></p><p><code>hexo d</code></p><p>清除缓存并部署服务器，然后打开 <a href="https://wissx.github.io">https://wissx.github.io</a> 成功。 </p><h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>以 landscape 为例作修改，其他主题应该也差不多，请自行谷歌。</p><h2 id="1、添加博客基本信息"><a href="#1、添加博客基本信息" class="headerlink" title="1、添加博客基本信息"></a>1、添加博客基本信息</h2><p>打开网站配置文件修改下列参数</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">博客名称</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">博客副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">博客描述</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">博客关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">你的名字</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"></span><br><span class="line"><span class="attr">url:</span> <span class="string">你的博客网址</span></span><br></pre></td></tr></table></figure><h2 id="2、配置主题样式"><a href="#2、配置主题样式" class="headerlink" title="2、配置主题样式"></a>2、配置主题样式</h2><p>打开主题配置文件 _config.yml 修改下列参数</p><h3 id="2-1、修改顶部菜单"><a href="#2-1、修改顶部菜单" class="headerlink" title="2.1、修改顶部菜单"></a>2.1、修改顶部菜单</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">主页:</span> <span class="string">/</span></span><br><span class="line">  <span class="string">关于:</span> <span class="string">/关于/</span></span><br><span class="line">  <span class="string">工作:</span> <span class="string">/tags/工作/</span></span><br><span class="line">  <span class="string">生活:</span> <span class="string">/tags/生活/</span></span><br><span class="line">  <span class="string">归档:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">rss:</span> <span class="string">/atom.xml</span></span><br></pre></td></tr></table></figure><p>这是列在顶部的菜单页面，”关于”是自定义页面，需要创建相应的页面，工作、生活是标签页，只要你发布对应标签的文章就会自动呈现。</p><h3 id="2-2、修改边栏展示"><a href="#2-2、修改边栏展示" class="headerlink" title="2.2、修改边栏展示"></a>2.2、修改边栏展示</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar</span></span><br><span class="line"><span class="attr">sidebar:</span> <span class="string">right</span></span><br><span class="line"><span class="attr">widgets:</span></span><br><span class="line"><span class="comment">#- category</span></span><br><span class="line"><span class="comment">#- tag</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">links</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">recent_posts</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tagcloud</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">archive</span></span><br></pre></td></tr></table></figure><p>边栏可以自定义，我新增了一个 links 边栏，放一些外部链接。</p><p>注意坑，默认主题中菜单里的归档是 archives，边栏里的归档是 archive。</p><p>打开 blog/themes/landscape/layout/_widget 目录，复制 archive.ejs 文件为副本，改名为 links.ejs，找到代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;&lt;%= __(&apos;archive_a&apos;) %&gt;&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">      &lt;%- list_archives(&#123;show_count: theme.show_count, type: theme.archive_type&#125;) %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure><p>修改为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;链接&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;https://wissx.github.io/关于/&quot; title=&quot;about&quot;&gt;关于我&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;http://wissx.github.io/atom.xml&quot; title=&quot;rss&quot;&gt;RSS 订阅&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;dd&gt;&lt;img src=&quot;https://imgsa.baidu.com/forum/w%3D580/sign=8ff1b3caf6f2b211e42e8546fa816511/59af8ddda144ad34c64b523edda20cf430ad8524.jpg&quot; width=&quot;220&quot; height=&quot;100&quot; alt=&quot;&quot;&gt;&lt;/dd&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure><p>用 li 或 dd 修改其中的内容，放你想放的链接或图片。</p><h3 id="2-3、添加博客图标"><a href="#2-3、添加博客图标" class="headerlink" title="2.3、添加博客图标"></a>2.3、添加博客图标</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span> <span class="string">/favicon.png</span></span><br></pre></td></tr></table></figure><p>找一个像素 128*128 的小图标作为博客图标，改名放到 blog/source 目录下。</p><h2 id="3、修改博客顶部图片"><a href="#3、修改博客顶部图片" class="headerlink" title="3、修改博客顶部图片"></a>3、修改博客顶部图片</h2><p>打开 blog/themes/landscape/source/css/_variables.styl 文件，更改图片，这里可修改标题与图片大小。</p><figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Header</span></span><br><span class="line">logo-size = <span class="number">50px</span></span><br><span class="line">subtitle-size = <span class="number">18px</span></span><br><span class="line">banner-<span class="attribute">height</span> = <span class="number">200px</span></span><br><span class="line"><span class="comment">//banner-url = "images/banner.jpg"（用微博链接加载更快）</span></span><br><span class="line">banner-url = <span class="string">"https://ws3.sinaimg.cn/large/006tNbRwgy1fxyfhk640mj31ll0u01hl.jpg"</span></span><br></pre></td></tr></table></figure><p>自己找个喜欢的图片，改名后复制到 blog/themes/landscape/source/css/images 目录替换原图。</p><h2 id="4、替换-Google-的-jQuery-源"><a href="#4、替换-Google-的-jQuery-源" class="headerlink" title="4、替换 Google 的 jQuery 源"></a>4、替换 Google 的 jQuery 源</h2><p>打开 blog/themes/landscape/layout/_partial/after-footer.ejs 文件，找到</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>替换为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="4、安装其他主题"><a href="#4、安装其他主题" class="headerlink" title="4、安装其他主题"></a>4、安装其他主题</h2><p>以 NexT 为例，修改网站配置文件</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure><p>终端执行命令</p><p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p><p><code>hexo s</code></p><p>打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可预览效果</p><p>NexT 是站内本地搜索，landscape 是引用谷歌搜索，这一点 landscape 很讨厌。</p><p>想移植 NexT 主题的站内搜索功能，还没成功，看不太懂教程…</p><ul><li><a href="https://www.jianshu.com/p/63431e5ee944" target="_blank" rel="noopener">https://www.jianshu.com/p/63431e5ee944</a></li><li><a href="https://www.jianshu.com/p/685bf59cde5e" target="_blank" rel="noopener">https://www.jianshu.com/p/685bf59cde5e</a></li></ul><h1 id="五、发布文章和添加页面"><a href="#五、发布文章和添加页面" class="headerlink" title="五、发布文章和添加页面"></a>五、发布文章和添加页面</h1><p>新建文章</p><p><code>hexo new post 文章标题</code></p><p>在 blog/source/_posts/ 会看到新建的文章，找一个 Markdown 编辑器写好内容。</p><p>新建页面</p><p><code>hexo new page 关于</code></p><p>blog/source/关于/index.md 就是”关于”页面，编辑你的内容。</p><p>配置网站、配置主题、写文章或编辑页面，完成后都执行命令</p><p><code>hexo s</code></p><p>再打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览博客，没问题就执行命令上传到服务器</p><p><code>hexo clean</code></p><p><code>hexo g</code></p><p><code>hexo d</code></p><h1 id="六、绑定个人域名"><a href="#六、绑定个人域名" class="headerlink" title="六、绑定个人域名"></a>六、绑定个人域名</h1><p>首先你得有一个域名，并在域名设置里把 DNS 服务器改为 DNSPOD 的 DNS 地址，f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p><p>在 blog\source 文件夹下创建文件 CNAME，无后缀名，里面写上你的个人域名，再执行命令</p><p><code>hexo clean</code></p><p><code>hexo g</code></p><p><code>hexo d</code></p><p>去下面网址查询你 Hexo 博客的 IP，例如查询 wissx.github.io 得到 185.199.110.153</p><p>IP 查询：<a href="http://ip.tool.chinaz.com/、https://www.ipip.net/ip.html" target="_blank" rel="noopener">http://ip.tool.chinaz.com/、https://www.ipip.net/ip.html</a></p><p>或者在终端 ping 你的网址也能得到 IP</p><p>使用 DNSPOD 进行域名解析：<a href="https://www.dnspod.cn/console/dns" target="_blank" rel="noopener">https://www.dnspod.cn/console/dns</a></p><p>添加记录类型 A 和 CHAME，如图</p><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fy7crcboifj30m00ad0t0.jpg" alt=""></p><p>生效时间：0-72小时，生效之后可用个人域名访问架设在 Github 的 Hexo 博客，Github 域名也能访问</p><h1 id="七、功能配置"><a href="#七、功能配置" class="headerlink" title="七、功能配置"></a>七、功能配置</h1><h2 id="1、配置-RSS"><a href="#1、配置-RSS" class="headerlink" title="1、配置 RSS"></a>1、配置 RSS</h2><p>执行命令</p><p><code>npm install hexo-generator-feed</code></p><p>打开网站配置文件，添加下列配置</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">    limit:</span> <span class="number">15</span></span><br></pre></td></tr></table></figure><h2 id="2、配置站内搜索功能"><a href="#2、配置站内搜索功能" class="headerlink" title="2、配置站内搜索功能"></a>2、配置站内搜索功能</h2><p><code>npm install hexo-generator-searchdb --save</code></p><p>编辑网站配置文件，新增以下内容到最底部：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></span><br><span class="line"><span class="attr">  field:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">  format:</span> <span class="string">html</span></span><br><span class="line"><span class="attr">  limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure><p>编辑主题配置文件，启用本地搜索功能：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>完成这两点还不够，想要站内搜索，要么移植 NexT 主题的本地搜索功能，要么配置谷歌百度收录，用搜索引擎来实现站内搜索，后者更简单。</p><p>本地搜索我搞不定，搜索引擎我不想搞，就让它成为我的遗憾吧。</p><h1 id="八、结尾"><a href="#八、结尾" class="headerlink" title="八、结尾"></a>八、结尾</h1><p>我不准备给博客配置评论分享、谷歌百度收录之类的，所以我不写这些教程了，网上有很多可参考的；</p><p>颜色字体美化之类的我也不折腾了，但标题可以修改一下大小与颜色。</p><p>这两个文件里可以修改博客标题 LOGO 的样式<br>blog/themes/landscape/source/css/_variables.styl （修改博客顶部图片中已操作）<br>blog/themes/landscape/source/css/_partial/header.styl</p><figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">text-decoration</span>: none</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">380</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0.5px</span> <span class="number">0.5px</span> <span class="number">#FDD835</span></span><br><span class="line"></span><br><span class="line">#logo</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: logo-size</span><br><span class="line">  <span class="attribute">line-height</span>: logo-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">5px</span></span><br></pre></td></tr></table></figure><p>基于各种原因，这个教程有很多遗憾，但也差不多，从0到1算是完成了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 38 --&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;Hexo 新手写的新手教程，记录自己搭建 Hexo 的过程，所有信息均来自互联网&lt;/p&gt;
+&lt;p&gt;Hexo 官方中文教
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="wissx.github.io/tags/Hexo/"/>
+    
+      <category term="博客" scheme="wissx.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RSS 复兴 - 从认识到使用</title>
+    <link href="wissx.github.io/2018/09/08/RSS%20%E5%A4%8D%E5%85%B4%20-%20%E4%BB%8E%E8%AE%A4%E8%AF%86%E5%88%B0%E4%BD%BF%E7%94%A8/"/>
+    <id>wissx.github.io/2018/09/08/RSS 复兴 - 从认识到使用/</id>
+    <published>2018-09-07T16:00:00.000Z</published>
+    <updated>2018-12-15T07:28:04.727Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 37 --><p>不知你是否听过 RSS，相信多数人是没听过的，这是一种古老的技术，这几年快绝迹了，最近一直在喊的“RSS 复兴”纯属意淫，在各大巨头封闭内容圈用户的生态下，内容创作者转向微信公众号的时代里（微信公众号不提供 RSS），还有人知道 RSS 就不错的了，使用人数更是少，下面我来普yi及yin一下。</p><h1 id="一、什么是-RSS"><a href="#一、什么是-RSS" class="headerlink" title="一、什么是 RSS"></a>一、什么是 RSS</h1><p>RSS 使用 XML 标准来共享内容，把网站的内容聚合一起输出给接收方，简单的说就是内容提供方打包文章内容推送出去，我们订阅一个 RSS 地址，就能获取内容了。<br>RSS 内容可以是文章、视频、音频、微博动态流等各种形式的内容，一般是指文章。</p><p>用人话来说就是在一个地方看不同网站的内容，这个地方是指 RSS 阅读器。</p><p>RSS 的流行是由 <a href="https://www.google.com/reader/about/" target="_blank" rel="noopener">Google Reader</a> 带起来的，最火的时候应该是08到12年，我是在 Google Reader 13年关闭后才接触 RSS 的，之前并不知道这个东西，我那个时候用的是鲜果阅读器，在14年鲜果也关闭了，微博微信流行起来后，RSS 就落寞了，用户越来越少，我是用过了才知道 RSS 那么的好用，也一直用到现在，订阅的内容不多，才20个左右，不过每天都能收到文章更新，真好。</p><h1 id="二、什么是-RSS-服务商和阅读器"><a href="#二、什么是-RSS-服务商和阅读器" class="headerlink" title="二、什么是 RSS 服务商和阅读器"></a>二、什么是 RSS 服务商和阅读器</h1><p>RSS 服务商就是收集各种网站提供的 RSS 内容，用户订阅后就可以接收内容，还可以多设备多平台同步。</p><p>RSS 阅读器是用来阅读文章的，登陆 RSS 服务商的帐号，订阅内容就会同步到阅读器里。</p><p>RSS 服务商会有官方的阅读器，用来登陆自家帐号接收订阅内容并阅读。</p><p>很多第三方 RSS 阅读器可以不登陆服务商帐号，用本地订阅 RSS，本地订阅不能同步，我是不会选择的。</p><p>有些第三方 RSS 阅读器可以登陆多个服务商帐号，不同的服务商会有不同的服务和功能，用同一个阅读器则可以保证一致的阅读体验。</p><p>服务商是用来订阅内容的，阅读器是用来看文章的。</p><p>服务商和阅读器的功能会有重叠，之间的关系有一些混乱。</p><h1 id="三、用-RSS-服务商-Feedly-来订阅内容"><a href="#三、用-RSS-服务商-Feedly-来订阅内容" class="headerlink" title="三、用 RSS 服务商 Feedly 来订阅内容"></a>三、用 RSS 服务商 Feedly 来订阅内容</h1><p><a href="http://www.feedly.com" target="_blank" rel="noopener">Feedly</a> 是个值得推荐的 RSS 服务商，也是我在用的 RSS 服务商，支持各大平台。<br>有优秀的官方阅读器，还有许多第三方 RSS 阅读器。</p><p>在这个页面可以看到支持 Feedly 的平台和阅读器 <a href="https://www.feedly.com/apps.html" target="_blank" rel="noopener">Feedly App Center</a>。</p><p>在这个页面可以看到用于代替 Google Reader 的阅读器 <a href="https://alternativeto.net/software/google-reader/" target="_blank" rel="noopener">Alternatives to Google Reader for all platforms</a></p><p>注册 Feedly 登陆后，直接在 Feedly  App 搜索栏搜索想要订阅的网站，网页版则是点左下方的添加内容来搜索想要订阅的网站，或者输入网站的 RSS 地址来订阅，提供 RSS 的网站都会把 RSS 地址放在显眼的地方，在网站的最下方、右边或其他页面可以找到，一般和微信微博放在一起。</p><p>我推荐两个网站 <a href="https://sspai.com/feed" target="_blank" rel="noopener">少数派</a>、<a href="http://liqi.io/feed/" target="_blank" rel="noopener">利器</a> 给大家订阅，当然也可以订阅我的博客 <a href="http://wantox.com/feed" target="_blank" rel="noopener">弋山客</a>，但我很久才更新一次，都不好意思推荐，囧。</p><p>想订阅更多内容，可以找自己喜欢的网站、博客，或上网搜索“值得订阅的RSS”，订阅数量不易过多，一天更新几十篇文章的也不要订阅，内容太多看不完会厌恶，只订阅最值得订阅的，每天把内容看完。</p><p>对于 RSS 我得说一句，用习惯了微信公众号，改用 RSS，还要自己去找网站的 RSS 地址，相信没多少人愿意学习这么复杂的操作，而且很多网站已经不提供 RSS 输出了，落寞是正常的。<br>不过有一些小众网站，并没有公众号，坚持更新自己的网站并提供 RSS 输出，这是值得订阅的。</p><p>还有个RSS 服务商也得推荐一下，就是 <a href="https://www.inoreader.com/?lang=zh_CN" target="_blank" rel="noopener">Inoreader</a>，也是个非常优秀的 RSS 服务商，有很多人推荐，<a href="https://sspai.com/post/27576" target="_blank" rel="noopener">不可替代的 RSS，比 Feedly 更好用的 Inoreader</a>，听说功能上比 Feedly 更强大，我没有用过，不过 Inoreader 的第三方阅读器比较少。</p><p>Feedly 和 Inoreader 都有官方阅读器，推荐下载使用。</p><p>这里有一篇非常专业的文章介绍 Feedly 和 Inoreader 之间的区别 <a href="https://sspai.com/post/44420" target="_blank" rel="noopener">2018 年主流 RSS 服务选哪家？Feedly、Inoreader 和 NewsBlur 全面横评</a>，和这位作者相比，我这种业余选手，只是各种吹水，乱七八糟的凑字数。</p><h1 id="四、第三方-RSS-阅读器推荐"><a href="#四、第三方-RSS-阅读器推荐" class="headerlink" title="四、第三方 RSS 阅读器推荐"></a>四、第三方 RSS 阅读器推荐</h1><p>第三方阅读器我推荐 <a href="https://itunes.apple.com/us/app/reeder-3/id697846300?mt=8" target="_blank" rel="noopener">Reeder</a> 和 <a href="https://itunes.apple.com/us/app/fiery-feeds-rss-reader/id1158763303?mt=8" target="_blank" rel="noopener">Fiery Feeds</a>，他们都支持 Feedly 和 inoreader，还支持更多服务商和平台。</p><p>iPhone 上我在用的是 Fiery Feeds，Mac 上我用的是 Leaf（收费的）。</p><p>第三方 RSS 阅读器的操作界面和阅读体验都不相同，得自己用过才知道适合哪个，先用官方的阅读器熟悉使用流程后，再用第三方阅读器来体验区别，慢慢找到自己最喜欢的那款。</p><p>安卓的第三方客户端我不熟悉，可以看看我上面两个阅读器介绍页面，代替 Google Reader 的阅读器，支持 Feedly 的阅读器，找一下安卓的，用官方的挺好。</p><p>视频、播客、微博我不推荐用 RSS 阅读器来订阅，用起来不方便，还是用视频网站来看视频，微博客户端看微博，播客软件听播客比较方便。</p><h1 id="五、RSS-阅读器体验对比"><a href="#五、RSS-阅读器体验对比" class="headerlink" title="五、RSS 阅读器体验对比"></a>五、RSS 阅读器体验对比</h1><p>没有。</p><p>Feedly、Inoreader 和 Reeder、Fiery Feeds 自己去下载体验，这 TM 就是萝卜青菜。</p><h1 id="六、RSS-高阶知识，制作-RSS-源"><a href="#六、RSS-高阶知识，制作-RSS-源" class="headerlink" title="六、RSS 高阶知识，制作 RSS 源"></a>六、RSS 高阶知识，制作 RSS 源</h1><p>很多网站不提供 RSS 输出，这个时候就需要制作 RSS 源，就是制作 RSS 地址，让我们来获取内容。</p><ol><li><p><a href="https://sspai.com/post/34320" target="_blank" rel="noopener">利用 Feed43，将任意网页制作成 RSS 订阅源</a></p><ul><li>以前做过，不过有些小问题，经常重复推送空白文章，可能是我制作不对，很久没用过了。</li></ul></li><li><p><a href="https://diygod.me/3264/" target="_blank" rel="noopener">使用 RSS 订阅 bilibili up主和番剧</a></p><ul><li>视频我不用 RSS 订阅</li><li>当然我不会阻止你用</li></ul></li><li><p><a href="https://rss.lilydjwg.me/" target="_blank" rel="noopener">订阅知乎专栏和 v2ex 评论</a></p><ul><li>可以用一用</li></ul></li><li><p><a href="https://docs.rsshub.app/" target="_blank" rel="noopener">RSSHub 制作各种 RSS 订阅源</a></p></li><li><p><a href="https://github.com/idealclover/Easy-to-RSS" target="_blank" rel="noopener">使用 Easy-to-RSS 订阅 RSSHub 支持的网站</a></p><ul><li>Easy-to-RSS 是 Chrome 浏览器插件，用来发现并订阅 RSSHub 支持的网站</li><li>这俩搭配简直完美</li><li>五星推荐，好好研究</li><li>非常强大的 RSS 订阅服务</li><li>给不提供 RSS 的各种网站制作 RSS 源</li><li>多数网站只需要根据 RSSHub 的说明，替换用户名即可，非常方便</li><li>RSSHub 是自建了 RSS 服务器</li></ul></li><li><p>自建 RSS 服务器。</p><ul><li>没弄过，不会，逃。</li></ul></li></ol><h1 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h1><p>我非常讨厌大篇文章，太长看着很累，比较喜欢800字左右的文章，但不知为什么就这 RSS 我 TM 都写了这么多，草，生怕你们不懂，可能看完了你们还是不懂。</p><p>ps：这是我第一篇用 Simplenote 写的文章。<br>pps：准备用 RSSHub 搭配 Easy-to-RSS 去订阅一些新站点了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 37 --&gt;
+&lt;p&gt;不知你是否听过 RSS，相信多数人是没听过的，这是一种古老的技术，这几年快绝迹了，最近一直在喊的“RSS 复兴”纯属意淫，在各大巨头封闭内容圈用户的生态下，内容创作者转向微信公众号的时代里（微信公众号不提供 RSS），还有人知道 RSS 就不错的了，
+      
+    
+    </summary>
+    
+    
+      <category term="RSS" scheme="wissx.github.io/tags/RSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>香港旅游交通指南</title>
+    <link href="wissx.github.io/2018/04/07/%E9%A6%99%E6%B8%AF%E6%97%85%E6%B8%B8%E4%BA%A4%E9%80%9A%E6%8C%87%E5%8D%97/"/>
+    <id>wissx.github.io/2018/04/07/香港旅游交通指南/</id>
+    <published>2018-04-06T16:00:00.000Z</published>
+    <updated>2018-12-15T07:36:52.082Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 36 --><p>从深圳去香港在交通行程方面的一些介绍。<br>我是4月5号从广州坐火车去深圳住，4月6号一早去的香港，当天回的广州。</p><p>#提前准备：</p><ul><li>通行证</li><li>身份证（国内住宿乘车用）</li><li>三五百港币和信用卡</li><li>移动电源（非常刚需）</li><li>淘宝买香港手机卡（13人民币，一天无限流量）口岸自取，到香港后再换到手机里。</li></ul><hr><p>#出入境过关流程：<br>全程走旅客通道和自助通道（E通道）验证通行证和指纹。</p><p>#深圳去香港<br>从深圳罗湖口岸走自助通道出境，到香港罗湖走人工通道入境（第一次），以后走自助通道入境。</p><p>#香港回深圳<br>从香港落马洲走自助通道出境，到深圳福田口岸过两次自助通道入境，不知道为什么深圳这边要验证两次通行证，第一次是通行证+指纹，第二次是通行证。<br>这是我2018年4月6号出入境的情况。</p><hr><p>#香港地铁车票事项：<br>过关到香港地铁客务中心买八达通（150港币）和游客过境旅游票（100港币，适合罗湖、落马洲坐地铁的游客），淘宝买贵不推荐。</p><p>八达通用来小额消费、电车、轮渡之类的很方便，过境旅游票用来长时间坐地铁比较划算，如果少坐地铁那只用八达通即可。</p><p>如果回来是坐广九直通车或中港通巴士那就买游客全日通（65港币），可省35港币，都是一天随便无限次坐地铁，区别在于全日通不可用于罗湖站和落马洲站。</p><p>坐飞机入境香港的有机场快线旅游票。</p><hr><p>#交通路线：<br>我手机装了四个 APP，谷歌地图、高德地图、12306、Airbnb。<br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq458g4y33j30yi0yi3z6.jpg" alt=""><br>谷歌高德查路线互补用，12306国内买火车票用，Airbnb 订房用。</p><p>下载好城市轨道交通路线图到手机相册<br><a href="http://cs.gzmtr.com/ckfw/" target="_blank" rel="noopener">广州地铁线路图</a><br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq454b9ksgj31kw1aldy4.jpg" alt=""><br><a href="http://www.szmc.net/" target="_blank" rel="noopener">深圳地铁线路图</a><br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq454svj8zj31kw1aoqiu.jpg" alt=""><br><a href="http://www.mtr.com.hk/ch/customer/services/system_map.html" target="_blank" rel="noopener">香港地铁路线图</a><br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fq455vr7hvj31kw1677ec.jpg" alt=""><br>还有香港轻铁，和地铁一样用旅游票/全日通乘车，我没坐过。<br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq45xvkn0oj31kw0qke81.jpg" alt=""></p><p><a href="https://www.hktramways.com/tc/interactive-map" target="_blank" rel="noopener">香港电车线路图</a><br><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq456cian6j30qc06idfs.jpg" alt=""><br>有多条电车路线，但都共用轨道，电车终点站超过你要去的目的地即可上车。<br>后门上车前门下车支付车费2.3港币，刷八达通即可。</p><p><a href="http://www.starferry.com.hk/tc/service" target="_blank" rel="noopener">香港轮渡图</a><br><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fq45a05oipj30p00gowg5.jpg" alt=""><br>尖沙咀码头坐船去中环或湾仔，景色很好值得一坐，才几块港币，刷八达通即可。</p><p>我提前准备了这些东西，在行程中没有走错路上错车，都是快速准确到达想要去的目的地，希望对你也有帮助。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 36 --&gt;
+&lt;p&gt;从深圳去香港在交通行程方面的一些介绍。&lt;br&gt;我是4月5号从广州坐火车去深圳住，4月6号一早去的香港，当天回的广州。&lt;/p&gt;
+&lt;p&gt;#提前准备：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通行证&lt;/li&gt;
+&lt;li&gt;身份证（国内住宿乘车用）&lt;/li&gt;
+&lt;li&gt;三五百港
+      
+    
+    </summary>
+    
+    
+      <category term="游玩" scheme="wissx.github.io/tags/%E6%B8%B8%E7%8E%A9/"/>
+    
+      <category term="香港" scheme="wissx.github.io/tags/%E9%A6%99%E6%B8%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My iPhone App</title>
+    <link href="wissx.github.io/2017/10/01/My%20iPhone%20App/"/>
+    <id>wissx.github.io/2017/10/01/My iPhone App/</id>
+    <published>2017-09-30T16:00:00.000Z</published>
+    <updated>2018-12-15T07:28:29.172Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 35 --><h1 id="生活-工具类"><a href="#生活-工具类" class="headerlink" title="生活/工具类"></a>生活/工具类</h1><ul><li>微信</li><li>京东</li><li>淘宝</li><li>支付宝</li><li>彩云天气</li><li>印象笔记</li><li>落格五笔</li><li>即刻（新闻）</li><li>小历（日历）</li><li>Pin（剪贴板工具）</li><li>Moke</li><li>Tweetbot</li><li>Telegram</li><li>Instagram</li><li>Overcast（播客）</li><li>Fiery Feeds（RSS）</li><li>TeeVee（美剧更新）</li><li>Workflow（快速操作）</li><li>Annotable（图片标注）</li><li>SKRWT（照片校正）</li><li>Piiic（拼长图）</li><li>Price Tag（app 价格趋势）</li><li>KeePass Touch（密码管理）</li></ul><h1 id="工作类"><a href="#工作类" class="headerlink" title="工作类"></a>工作类</h1><ul><li>QQ（工作交流）</li><li>WPS（文档办公）</li><li>Trello（任务看板）</li><li>坚果云（文档同步）</li></ul><p>这些是我常用的 app，还有一些自带的和理财类就不列了。</p><p>才装这么一点 app，当果粉都没资格…</p><p>把使用频率低的 app 放一个文件夹，只用一屏图标，操作简单明了，看着也清爽。</p><p>想要 app 不烦人，还得修改一下 app 的通知规则。基本操作就是把不重要的、有广告的、无需通知的、超级烦人的 app 关闭通知或关闭某项通知功能，具体因人而异，因 app 而异，因 bug 而异。</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fk2zcnkfwkj30yi1pc77s.jpg" alt=""></p><p>这个主屏看着非常普通，一个亮眼的个性的 app 都没有，但使用上没什么不方便，留下最重要的就足够了。</p><hr><p>今年的苹果发布会没什么值得讲，观看直播时比往年少了些许兴奋与激动。</p><p>iPhone 8 外观没区别，无线充电是个鸡肋，iOS 11 稳定性退步了，AR App 可能是唯一的乐趣。</p><p>iPhone X 系统操作逻辑大改，像个工程机，售价近万…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 35 --&gt;
+&lt;h1 id=&quot;生活-工具类&quot;&gt;&lt;a href=&quot;#生活-工具类&quot; class=&quot;headerlink&quot; title=&quot;生活/工具类&quot;&gt;&lt;/a&gt;生活/工具类&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;微信&lt;/li&gt;
+&lt;li&gt;京东&lt;/li&gt;
+&lt;li&gt;淘宝&lt;/li&gt;
+&lt;li&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="iPhone" scheme="wissx.github.io/tags/iPhone/"/>
+    
+      <category term="软件" scheme="wissx.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Trello 我的任务管理流程</title>
+    <link href="wissx.github.io/2017/08/07/Trello%20%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B/"/>
+    <id>wissx.github.io/2017/08/07/Trello 任务管理流程/</id>
+    <published>2017-08-06T16:00:00.000Z</published>
+    <updated>2018-12-15T07:26:16.613Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 34 --><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fiaft4y0lhj30zk0k00t6.jpg" alt=""></p><p>如果你每天接收各种任务，处理各种事情，这个任务管理/登记流程也许值得一试。</p><p>在 Trello 创建一个待办任务列表¹、一个任务封存列表²、几个任务分类列表³。</p><p>每天把所有任务添加到待办列表，一个任务一个卡片，然后一个个去做，做完就移动到封存列表。</p><p>待办任务当天没做完，下班前就在任务卡片上补充任务要点，这利于之后快速完成任务，并把任务分类，清空待办列表。</p><p>第二天继续添加待办任务并处理之前未完成的分类任务。</p><p>这套工作流程很像 To-Do List，但有个最大的区别是，这套流程没有铃声提醒功能，不用设置开始时间、完成时间、不用打勾来让任务消失，适合无固定完成时间、每日接任务、在最短时间完成、任务多且繁杂的工作。</p><p>团队也可以使用这套流程，接到任务你就把它添加到待办列表，通知团队成员去完成任务，当天没完成的任务下班前就分类整理，并补充详细信息（方便完成任务），添加适合去完成此任务的成员，分类任务就让任务成员来跟进处理。</p><p>任务流程这样就走通了。</p><p>任务流程演变：</p><p>最开始我在备忘录里记任务，发现管理很麻烦。</p><p>后来改用 Trello 来分类记录任务，发现在接收任务时就进行任务列表分类是一件很没效率的事。<br>很多任务当天就能完成，不需要分类，完成后直接移动到封存列表即可。分类需要思考，需要补充信息让其更清晰，不然分类没有意义。</p><p>现在把接收到的任务添加到待办列表，当天完成不了，再分类处理，工作效率高很多，操作流程也更简洁了。</p><hr><ol><li>待办列表用作收集当天任务。</li><li>封存列表用作归档以便日后方便查找。</li><li>分类列表用于任务分类，建三个左右比较合适，分类让任务更清晰，同时缓解待办列表的任务数量。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 34 --&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws4.sinaimg.cn/large/006tNc79ly1fiaft4y0lhj30zk0k00t6.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果你每天接收各种任务，处理各种事情，这个任务管理/登记流程也许值
+      
+    
+    </summary>
+    
+    
+      <category term="Trello" scheme="wissx.github.io/tags/Trello/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ThinkVision X24 显示器上手</title>
+    <link href="wissx.github.io/2017/06/08/ThinkVision%20X24%20%E6%98%BE%E7%A4%BA%E5%99%A8%E4%B8%8A%E6%89%8B/"/>
+    <id>wissx.github.io/2017/06/08/ThinkVision X24 显示器上手/</id>
+    <published>2017-06-07T16:00:00.000Z</published>
+    <updated>2018-12-15T07:26:03.557Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 33 --><p>为给 MacBook Air 配一台显示器，看了 2K 显示器，看了 4K 显示器，还看了 21:9 显示器。</p><p>4K 是不行的，因为我的 MacBook Air 核显不支持 4K 分辨率。</p><p>常看到人说 2K 效果不好，当然价格也是比较贵的，有点鸡肋，便放弃了。</p><p>一直想买 21:9 的显示器，合适价格的 21:9 显示器外观都难看，挑了好久，也没看中。（我很喜欢超宽屏）</p><p>无意看到一款 1080P 的显示器，被漂亮的外观吸引了，窄边框，超薄机身，性感的底座，主要是价格合适。</p><p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fgbt5yz59ej30rs0rsq4f.jpg" alt="ThinkVision X24"></p><p>618期间正好降价，便剁手了。</p><p>显示器箱子很大，有很厚的泡沫，保护得很好，机身很薄，要拿机身下部分或支架才稳妥。显示器配了 HDMI 线和 DP 线，自己买了根 Mini DP 转 DP 线。</p><p>双屏显示我的 Mission Control 设置。</p><p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fgd0i49n4xj30ib06r750.jpg" alt="Mission Control"></p><p>美剧，浏览器，刷推，聊天，四个常用操作终于不用在一块 13 寸上频繁切换了，有了一块屏幕分担操作界面，观看体验好多了。</p><p>总结就是：眼睛爽。</p><p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fgd19ah6icj31kw16ou0x.jpg" alt="桌面"></p><p>桌面图，光线差，拍出来的 MacBook 都脱皮了…将就看吧</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 33 --&gt;
+&lt;p&gt;为给 MacBook Air 配一台显示器，看了 2K 显示器，看了 4K 显示器，还看了 21:9 显示器。&lt;/p&gt;
+&lt;p&gt;4K 是不行的，因为我的 MacBook Air 核显不支持 4K 分辨率。&lt;/p&gt;
+&lt;p&gt;常看到人说 2K 效果不好，当然
+      
+    
+    </summary>
+    
+    
+      <category term="显示器" scheme="wissx.github.io/tags/%E6%98%BE%E7%A4%BA%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>值得买的苹果产品</title>
+    <link href="wissx.github.io/2017/06/06/%E5%80%BC%E5%BE%97%E4%B9%B0%E7%9A%84%E8%8B%B9%E6%9E%9C%E4%BA%A7%E5%93%81/"/>
+    <id>wissx.github.io/2017/06/06/值得买的苹果产品/</id>
+    <published>2017-06-05T16:00:00.000Z</published>
+    <updated>2018-12-15T07:31:26.989Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 32 --><p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fgbsjs9opwj30r80j6wfa.jpg" alt="iMac Pro"></p><p>苹果产品对我来说</p><ul><li>有一些是必要的</li><li>有一些是非必要的</li><li>有一些是不要的</li><li>有一些是想要但没钱的 🙄</li></ul><p>我认为自己是果粉，由于勤俭节约（穷）只买过两台 iPhone 和一台 MacBook Air。(一个理性的果粉…)</p><p>我认为 Mac 和 iPhone 是最值得买的苹果产品，电脑和手机绝大多数人都有，我为什么选择苹果，最大的原因是苹果产品的体验不流氓。</p><p>iPhone 肯定买最新的。Mac 可以多考虑是要台式还是笔记本，我选择了 13 寸的 MacBook Air，足够。</p><p>毕竟当时穷，加上自己用不上 Pro 的性能选择了 Air，现在看来 Pro 是更好的选择，因为我的新需求是要增加一个显示器，Pro 有独立显卡，选择显示器的空间大，可以考虑 4K 显示器什么的。</p><p>iPad 对我来说就是非必要的，同为 iOS 系统，iPhone 已足够。虽然 iPad 有很优秀的特性，但我不怎么喜欢平板设备。</p><p>而 Apple Watch 这种装饰品是我不需要的，现在也就两个功能，健身数据和查看通知，实在没兴趣。</p><p>我不喜欢手表、戒指、手链、项链等没什么用的装饰品，戴在身上不自在，甚至包括围巾。</p><p>只有 iMac 是想要但没钱买的产品，毕竟不是刚需，因为我已经有 MacBook Air 了。</p><p>有一台显示器看中很久了，趁着 618 剁手！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 32 --&gt;
+&lt;p&gt;&lt;img src=&quot;https://ww1.sinaimg.cn/large/006tNbRwgy1fgbsjs9opwj30r80j6wfa.jpg&quot; alt=&quot;iMac Pro&quot;&gt;&lt;/p&gt;
+&lt;p&gt;苹果产品对我来说&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有一些
+      
+    
+    </summary>
+    
+    
+      <category term="Apple" scheme="wissx.github.io/tags/Apple/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>广州一日游</title>
+    <link href="wissx.github.io/2017/04/29/%E5%B9%BF%E5%B7%9E%E4%B8%80%E6%97%A5%E6%B8%B8/"/>
+    <id>wissx.github.io/2017/04/29/广州一日游/</id>
+    <published>2017-04-28T16:00:00.000Z</published>
+    <updated>2018-12-15T07:33:00.418Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 31 --><p>堂妹从深圳来广州玩，我列了个一日游的日程。</p><p>9 点 20 到广州东。</p><p>从体育中心步行往石牌桥、岗顶逛一逛。想在點都德吃早茶，但很多人排队，就找了个地方吃早饭，当时 10 点多…</p><p>吃完早饭去广州塔、T.I.T 创意园转了一圈。<br>12 点半结束。</p><p>接着坐地铁去陈家祠，寻找美食。（每一家都非常多人）</p><p>第一家沙湾甜品，休息没开门…</p><p>第二家顺记冰室，点了椰子雪糕和椰芒冰，俩人都表示非常好吃。</p><p>第三家陈添记鱼皮，鱼皮非常爽口。</p><p>第四家南信牛奶，点了热的双皮奶和姜撞奶，因为没有冰的了，味道可以，如果是冰的应该更好。</p><p>去完第四家就去逛了老城区和沙面，因为吃太多了，需要消化…</p><p>步行恩宁路至龙津西路到荔枝湾，这是典型的广州老城区，很喜欢这种风格。期间听到一个路人妹子说“这路怎么这么破”…<br>在恩宁路时是 4 点。</p><p>从荔枝湾骑 ofo 到沙面，属于原路返回，龙津西路到恩宁路再往南，因为这路人少，宝华路人非常多，尽量避开。</p><p>沙面非常多人在拍照，我看着那些人像拍照狂魔，堂妹没有拍照，她说这些人很恐怖，我们就在沙面公园吹了吹风。</p><p>没待很久就又去吃了，步行到吴财记。</p><p>第五家吴财记，点了捞面和炸云吞，非常好吃。<br>这是最后一个目的地，届时 6 点。</p><p>吃了四家，顺记冰室和吴财记非常好吃，推荐去。</p><p>一日游行程结束，各回各家。</p><p>我一天下来没拍照，食物不拍，人多不想拍，所以只是去逛街而已。</p><hr><h1 id="广州一日游行程指南："><a href="#广州一日游行程指南：" class="headerlink" title="广州一日游行程指南："></a>广州一日游行程指南：</h1><p>一、体育中心、石牌桥、岗顶</p><p>二、广州塔、T.I.T 创意园</p><p>三、美食，长寿路宝华路那块，由北至南</p><ol><li>沙湾甜品，推荐双皮奶、姜埋奶、芝麻糊、香草绿豆沙、菠萝冰水、椰汁香芋红豆沙，广州龙津东路733号</li><li>顺记冰室，推荐椰子雪糕、椰芒冰，广州市宝华路85号</li><li>陈添记鱼皮，推荐鱼皮、艇仔粥、猪肠粉，广州市宝华路59号（小巷里）</li><li>南信牛奶，推荐双皮奶、姜撞奶，广州市第十甫路47号</li><li>吴财记，推荐捞面、炸云吞，广州大同路和隆里20号（小巷里）</li></ol><p>四、逛老城区，恩宁路—龙津西路—荔枝湾</p><p>五、沙面</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 31 --&gt;
+&lt;p&gt;堂妹从深圳来广州玩，我列了个一日游的日程。&lt;/p&gt;
+&lt;p&gt;9 点 20 到广州东。&lt;/p&gt;
+&lt;p&gt;从体育中心步行往石牌桥、岗顶逛一逛。想在點都德吃早茶，但很多人排队，就找了个地方吃早饭，当时 10 点多…&lt;/p&gt;
+&lt;p&gt;吃完早饭去广州塔、T.I.T 
+      
+    
+    </summary>
+    
+    
+      <category term="游玩" scheme="wissx.github.io/tags/%E6%B8%B8%E7%8E%A9/"/>
+    
+      <category term="广州" scheme="wissx.github.io/tags/%E5%B9%BF%E5%B7%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中文播客（Podcast）推荐</title>
+    <link href="wissx.github.io/2016/10/31/%E4%B8%AD%E6%96%87%E6%92%AD%E5%AE%A2%EF%BC%88Podcast%EF%BC%89%E6%8E%A8%E8%8D%90/"/>
+    <id>wissx.github.io/2016/10/31/中文播客（Podcast）推荐/</id>
+    <published>2016-10-30T16:00:00.000Z</published>
+    <updated>2018-12-15T07:27:27.828Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 30 --><p>听播客也是一种生活方式 。</p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>每天用微博微信了解各种资讯，时间长了眼睛看着累，听播客也是一种学习了解扩宽眼界的途经，听播客和听歌一样简单方便，不占用双手和眼睛，不会耽误你做事，上下班途中、吃饭期间、公交地铁上、做家务时都非常适合听播客。</p><h1 id="播客软件"><a href="#播客软件" class="headerlink" title="播客软件"></a>播客软件</h1><p>现在用 Overcast 和已下架的旧版 Castro 这种泛用型播客软件来订阅管理播客，系统自带的播客软件有点臃肿，用着不爽，没怎么用了。（ps：这两个软件都是 iOS 平台的，新版 Castro 收费30元）</p><p><a href="http://sspai.com/31517" target="_blank" rel="noopener">Overcast</a> 最喜欢的功能是智能加速（缩短人声停顿间隔）和声音均衡两个功能，我的 Overcast 一般是1.6倍左右的播放速度。</p><p><a href="http://sspai.com/35158" target="_blank" rel="noopener">Castro</a> 最喜欢的是简洁，这个简洁用着好爽，如果加上 Overcast 的智能加速和声音均衡功能简直完美，我的 Castro 一般是用中间的正常值加两格的速度来播放。</p><p>安卓平台可用 Pocket Casts（双平台正版收费 25 元）或开源免费的 AntennaPod。</p><p>有很多人喜欢用喜马拉雅、荔枝来听电台/播客节目，但这种电台软件臃肿又复杂，不够纯粹，我不怎么喜欢，一定要用的话就选喜马拉雅吧，还是推荐使用泛用型播客客户端来收听播客。</p><p>在软件中搜索播客名称即可找到播客，搜索不到的话可以使用播客 RSS 订阅的方式来添加播客，泛用型播客软件也可以订阅喜马拉雅荔枝FM中的电台/播客节目，只需要一个 <a href="http://sspai.com/35458" target="_blank" rel="noopener">XML 地址</a></p><h1 id="播客清单"><a href="#播客清单" class="headerlink" title="播客清单"></a>播客清单</h1><p>我关注的大多是科技互联网相关的播客，这是我的兴趣之一，这些播客可以在播客软件中搜索订阅。</p><p>我 Castro 中的播客列表截图。</p><p><img src="http://ww2.sinaimg.cn/large/72f96cbagw1f9au05euvij20yi2s6ak8.jpg" alt=""></p><h2 id="科技互联网类："><a href="#科技互联网类：" class="headerlink" title="科技互联网类："></a>科技互联网类：</h2><p><strong>Checked</strong></p><ul><li>讨论苹果相关的内容，我现在最喜欢的播客之一，主播对播客很用心，针对播客添加了章节，可以跳转到对应章节的音频段落，还有章节封面，大大提升用户体验。（ Overcast 中可以看到 Checked 的章节特性）</li></ul><p><strong>比特新声</strong></p><ul><li>讨论科技互联网话题。</li></ul><p><strong>极客电台</strong></p><ul><li>大多是上网小技巧，有时可以发现自己不知道东西。</li></ul><p><strong>迟早更新</strong></p><ul><li>讲科技/商业的一些话题。</li></ul><p><strong>科技相对论</strong></p><ul><li>讲科技故事。</li></ul><p><strong>罗辑思维</strong></p><ul><li>用历史故事来形容商业模式，故事有趣有料。</li></ul><p><strong>蛋解创业</strong></p><ul><li>讲创业故事。</li></ul><p><strong>3d 打印创业声音日记</strong></p><ul><li>一个3d打印从业者的创业故事，前两天刚关注的新播客，背景音乐比较干扰。</li></ul><p><strong>PMCAFF 产品社区</strong></p><ul><li>讲互联网产品的各种知识。</li></ul><p><strong>Teahour.fm</strong></p><ul><li>讲程序员/创业/Geek 话题</li></ul><h2 id="新闻类："><a href="#新闻类：" class="headerlink" title="新闻类："></a>新闻类：</h2><p><strong>新闻酸菜馆</strong><br><strong>锵锵三人行</strong></p><ul><li>新闻酸菜馆和锵锵三人行都是热点新闻的话题讨论。</li><li>锵锵三人行在播客软件中搜不到，这是我在使用的订阅地址 <a href="https://qcdn.adeline.cc/demo/phoenixtv/podcast/audio/qqsrx.xml" target="_blank" rel="noopener">https://qcdn.adeline.cc/demo/phoenixtv/podcast/audio/qqsrx.xml</a></li></ul><h2 id="生活类："><a href="#生活类：" class="headerlink" title="生活类："></a>生活类：</h2><p><strong>津津乐道</strong></p><ul><li>几个天津人讲生活中的故事和发生的事情，有趣有料。</li></ul><p><strong>你知道的真多</strong></p><ul><li>分享生活小知识小技巧。</li></ul><h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>自 14 年知道播客这个东西后就爱上了，成为了一个坚定的播客爱好者，几乎每天都听播客，和刷 SNS 一样上瘾了。</p><p>我一般是从微博和推特上看到别人推荐播客，然后自己去搜索，了解/试听一下，感兴趣就会订阅，超过三个月未更新的播客我会删除。</p><p>播客太多听不过来，那是你没利用好时间，如果对某期不感兴趣不听删除即可，播主语速一般不快，使用快速播放可以节省很多时间哦，习惯快速听阅后，感觉周围所有的声音都变慢了。</p><p>如有错误欢迎指出，谢谢。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 30 --&gt;
+&lt;p&gt;听播客也是一种生活方式 。&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;每天用微博微信了解各种资讯，时间长了眼睛看着累，听播客也是一种学习了解扩宽
+      
+    
+    </summary>
+    
+    
+      <category term="播客" scheme="wissx.github.io/tags/%E6%92%AD%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>买台 iPhone7 Plus 吧</title>
+    <link href="wissx.github.io/2016/09/08/%E4%B9%B0%E5%8F%B0%20iPhone7%20Plus%20%E5%90%A7/"/>
+    <id>wissx.github.io/2016/09/08/买台 iPhone7 Plus 吧/</id>
+    <published>2016-09-07T16:00:00.000Z</published>
+    <updated>2018-12-15T07:30:20.215Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 29 --><p>关于各种预测非常遗憾的是没有无线充电、快速充电，也没有蓝色版本。</p><p>今年的苹果发布会有那么几个重点是我所关注的。</p><h1 id="双镜头"><a href="#双镜头" class="headerlink" title="双镜头"></a>双镜头</h1><p>双镜头只在 iPhone7 Plus 上才有，一个广角一个长焦，2倍光学变焦，10倍数码变焦，超强的背景虚化，无论人像风景拍照能力妥妥的，iPhone相机一直都非常优秀，在手机相机上除了三星也没对手了。</p><p>准备买几千块钱相机的同学还是放弃这个想法吧，iPhone7 Plus 你值得拥有。</p><h1 id="两个黑色版本"><a href="#两个黑色版本" class="headerlink" title="两个黑色版本"></a>两个黑色版本</h1><p><img src="http://ww3.sinaimg.cn/large/72f96cbagw1f7mcm7df90j20ck09jjrk.jpg" alt=""></p><p>亚光亮光的生动对比，不会吓着吧，哈哈。</p><p>一个普通黑色，就是以前深空灰改成全黑了，手感依旧。</p><p>一个亮黑色，我说一些词语感受一下吧，高光亮/黑、玻璃陶瓷金属、镜面、晶莹剔透、钢琴烤漆等，非常容易粘指纹，注意这是台指纹收集器！指纹收集器！！指纹收集器！！！必须说三遍。因为机身非常光滑，手机拿在手中也很滑，小心掉地上哦，太光滑机身还容易刮花，苹果官方建议用户使用保护套…</p><p>由于工艺难度增加，亮黑色只有128G和256G的版本，真正的高端黑。</p><p>对于亮黑色黑到灵魂深处的美，我的感受是：可远观而不可亵玩焉。</p><h1 id="年年焕新计划"><a href="#年年焕新计划" class="headerlink" title="年年焕新计划"></a>年年焕新计划</h1><p><img src="http://ww4.sinaimg.cn/large/72f96cbagw1f7mctb5wlwj20m809974z.jpg" alt=""></p><p>苹果官方原话：有了 iPhone 年年焕新计划，就可每年轻松升级到新 iPhone，并可享受 AppleCare+ 全方位服务计划的安全保障。只需在一年内折抵你的 iPhone，即可获得此设备原支付金额 50% 的折抵优惠来购买新 iPhone。</p><p>解释：每年把旧iPhone给苹果，获得旧iPhone原价一半的折扣优惠来购买新iPhone。</p><p>条件：需要购买 iPhone7 或 7Plus 加上 AppleCare+ 服务才能启用。</p><p>举个案例：今年买一台 iPhone7 加上 AppleCare+ 服务，5388+988共6376元。到第二年新iPhone发布时交还iPhone7，获得一半折扣2694元来购买新款iPhone（前提：旧iPhone是完好的）。<br>AppleCare+ 是一次购买两年服务，所以第三年需再次购买 AppleCare+ 服务才能继续享受焕新计划的活动。</p><p>这项服务好处还是很明显的，有 AppleCare+ 服务的光环加持，有每年旧机一半的折扣优惠，非常适合每年换新款iPhone的用户。<br>参加此活动两台iPhone两年才9070元，不参加此服务则需要10776元，便宜好几百还赚了个 AppleCare+。（以每台5388元算）</p><p>如果你一台iPhone用两年那就不用考虑这个活动了。</p><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>iPhone7 的性能比 Plus 高一点，因为 Plus 的大屏幕需要占用更多资源。</p><p>Plus 的大屏能展示的内容更多，不用总是滑啊滑，这点非常重要，Plus 的观感也更好，缺点是单手操作不方便，男生随身携带也不方便，这么大放口袋硌得慌。</p><p>我的购买决策是 iPhone7 Plus 32G 黑色版，亮黑虽美，但不防指纹，没有32G版本贵了一截…</p><p>我不会选择官方的 AppleCare+ 服务，我是两年一换，所以这个不划算。在哪里购买还得再看看情况，能信用卡免息分期就选择这个，或者是送话费的合约机。</p><p>购买渠道的话太多了，预约购机的话主要是苹果官方（官网、天猫、Apple Store），京东苏宁，三大运营商等。</p><p>9月9号开始预购，9月16上市，发货的话应该还要等一周，9月23的样子。</p><p>好了准备卖内裤🌚。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 29 --&gt;
+&lt;p&gt;关于各种预测非常遗憾的是没有无线充电、快速充电，也没有蓝色版本。&lt;/p&gt;
+&lt;p&gt;今年的苹果发布会有那么几个重点是我所关注的。&lt;/p&gt;
+&lt;h1 id=&quot;双镜头&quot;&gt;&lt;a href=&quot;#双镜头&quot; class=&quot;headerlink&quot; title=&quot;双镜头&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="iPhone" scheme="wissx.github.io/tags/iPhone/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>运营学习笔记</title>
+    <link href="wissx.github.io/2016/09/05/%E8%BF%90%E8%90%A5%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>wissx.github.io/2016/09/05/运营学习笔记/</id>
+    <published>2016-09-04T16:00:00.000Z</published>
+    <updated>2018-12-15T07:35:48.414Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 28 --><h1 id="微信排版基本要求"><a href="#微信排版基本要求" class="headerlink" title="微信排版基本要求"></a>微信排版基本要求</h1><p>图文标题：控制在13-15个字，太长会换行，不易阅读，还会遮挡封面图片。<br>内文标题：字体设置为20号比较好，标题尽量简短。<br>正文：字体选择14号或16号，14号字体会显得整体美观一些，而16号字体则有着较高的辨识度（推荐16号），行间距选1.5rem。</p><p><strong>每段文字上下要空一行，每张图片上下要空一行</strong>，让观感更舒服。<br>文章摘要不应该超过三行。<br>每段文字不要过长，控制在六句以内，一句话不要写得太长，注意节奏。<br>内容比较散的文章，应该分小节。<br>每屏要有关注点，强调加粗，标出重点。<br>全部文章最好统一排版，让读者产生熟悉感。<br>文字颜色不要超过三种，颜色过多眼花缭乱。<br>字体不要超过两种。</p><p>统一风格，简洁为主。<br>最好的排版，是让读者完全忽略文章排版。</p><p>微信图文编辑器可使用 <strong>新榜</strong> 或 <strong>i排版</strong>，不过我喜欢用 <strong>Markdown</strong> 写作。</p><h1 id="文章标题与内容"><a href="#文章标题与内容" class="headerlink" title="文章标题与内容"></a>文章标题与内容</h1><p>一些吸引人的标题字样：</p><blockquote><p><strong>如何</strong>移居火星<br><br>世界<strong>十大</strong>未解之迷<br><br><strong>你所不知道的</strong>手机功能<br><br><strong>最新最全</strong>电影资讯<br><br>从现象级<strong>热点</strong>看社会民生(借某某事件的热点来进行炒作)</p></blockquote><p>借助这些关键字可以写出阅读率更高的文章（某些带有恶意或欺骗的字样就不要使用），文章内容质量和吸引力才是持续带来高阅读量的关键。（痛心，我自己没做到还教别人…)</p><p>不知写什么内容时，可以查看现在的热点趋势是什么，帮你带来灵感和动力。</p><p>热点趋势数据查询网站：</p><ul><li>搜狗微信搜索</li><li>新榜</li><li>百度搜索风云榜</li><li>微博热搜榜</li><li>百度指数</li><li>艾瑞</li><li>大数据导航199it</li></ul><p>这些网站也可以用来分析竞品情况，正好说到竞品分析。</p><h1 id="竞品分析"><a href="#竞品分析" class="headerlink" title="竞品分析"></a>竞品分析</h1><p>从下面几点去分析了解竞品现状：</p><ol><li>市场趋势、业界现状；</li><li>竞争对手的企业愿景、产品定位及发展策略；</li><li>目标用户；</li><li>市场数据；</li><li>核心功能；</li><li>交互设计；</li><li>产品优缺点；</li><li>运营及推广策略；</li><li>总结&amp;行动点。</li></ol><p>列出直接对手、潜在对手和学习对象，学习对象很可能就是直接对手，这点需要注意。</p><p>下面是一张<strong>竞品分析流程</strong>图：</p><p><img src="http://ww1.sinaimg.cn/large/72f96cbagw1f7iy9tnm9nj21fc1jddnp.jpg" alt="竞品分析图.jpg"></p><h1 id="行业资讯了解与学习"><a href="#行业资讯了解与学习" class="headerlink" title="行业资讯了解与学习"></a>行业资讯了解与学习</h1><p>下面这些资讯网站是我整理飞鱼船长资料做成的思维导图：</p><p><img src="http://ww3.sinaimg.cn/large/72f96cbagw1f7iyjf8ek5j20uu0us7e5.jpg" alt="运营控资讯网站.png"></p><p>暂时写了这些，不会什么高深技巧，望求指导。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 28 --&gt;
+&lt;h1 id=&quot;微信排版基本要求&quot;&gt;&lt;a href=&quot;#微信排版基本要求&quot; class=&quot;headerlink&quot; title=&quot;微信排版基本要求&quot;&gt;&lt;/a&gt;微信排版基本要求&lt;/h1&gt;&lt;p&gt;图文标题：控制在13-15个字，太长会换行，不易阅读，还会遮挡封面图
+      
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="wissx.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="运营" scheme="wissx.github.io/tags/%E8%BF%90%E8%90%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iPhone7 购买指南</title>
+    <link href="wissx.github.io/2016/08/15/iPhone7%20%E8%B4%AD%E4%B9%B0%E6%8C%87%E5%8D%97/"/>
+    <id>wissx.github.io/2016/08/15/iPhone7 购买指南/</id>
+    <published>2016-08-14T16:00:00.000Z</published>
+    <updated>2018-12-15T07:22:45.130Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 27 --><p><img src="http://ww1.sinaimg.cn/large/006tKfTcgw1f6utlg7f5sj30fj09pjrm.jpg" alt=""></p><p>关于iPhone7的消息到处都是，谍照也是各种各样，总体应该会有下面这几大改变。</p><p>具备无线充电、双摄像头，增加新配色，抛弃3.5毫米耳机孔，这些改动是最具话题性的地方，其他还有每年必备的CPU升级、整体性能提升、外观调整等等。而无线充电和双摄像头应该只会出现在Plus机型上。</p><p>对于我这个果粉来说，新iPhone的这些改动让我激动不以，这是iPhone革命性的变化，是全球果粉的福音。</p><p>对于iPhone7，个人还有一些激进的猜测，比如内存增加，摄像头像素增加，屏幕PPI增加，有了无线充电那快速充电也一并上齐，Touch ID指纹Home键集成于屏幕玻璃下面，如果iPhone7上就实现了这个技术，那我做梦都会笑醒。</p><p>每年iPhone发售时，各大数码资讯媒体都会有非常详细的购买指南，我就是提前来刷存在感的…</p><p>土豪就不用看什么购买指南了，直接找黄牛吧。</p><p>第一时间想要购买新iPhone的渠道不多，也就国行、港行，大陆和香港新iPhone上市都会出现缺货现象，供不应求啊，找黄牛买我觉得非常不划算，还是老实预定排队购买的好。</p><p>买国行是最方便的，第一时间在各大平台先预定，苹果官网，京东苏宁，移动联通电信都是不错的选择，有免息分期的话更划算。</p><p>第一时间买港行的话，得去香港或者香港有朋友。</p><p>还有就是在苹果直营店提前一两天排除购买，那体验绝对毕生难忘，蛤蛤。我没体验过，觉得这太疯狂了。</p><p>如果等新iPhone发售一两个月后再买，那很多地方都有现货卖了，各种水货，各种代购，加上线下代理商大量铺货，国行一般会有300元左右的小幅降价，除了刚发售那两周，这时候也是非常适合购买的。</p><p>对了我应该会在第一时间预定iPhone7 Plus。</p><p>没了就这些。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 27 --&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/006tKfTcgw1f6utlg7f5sj30fj09pjrm.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;关于iPhone7的消息到处都是，谍照也是各种各样，总体应该会有下面
+      
+    
+    </summary>
+    
+    
+      <category term="iPhone" scheme="wissx.github.io/tags/iPhone/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于微信付费阅读</title>
+    <link href="wissx.github.io/2016/07/03/%E5%85%B3%E4%BA%8E%E5%BE%AE%E4%BF%A1%E4%BB%98%E8%B4%B9%E9%98%85%E8%AF%BB/"/>
+    <id>wissx.github.io/2016/07/03/关于微信付费阅读/</id>
+    <published>2016-07-02T16:00:00.000Z</published>
+    <updated>2018-12-15T07:32:06.235Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 26 --><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fldwiz8vvnj31kw0z5n6i.jpg" alt=""></p><p>题图：日落后的广州</p><p>有传言说微信公众号准备推出付费阅读功能，只能付费才能阅读或者订阅公众号。</p><p>付费后才能阅读文章，作者更积极，更愿写出好东西（所谓真正的干货），作者只需服务付费的一批读者，不会看到喷子们的恶心评论和留言，读者喜欢才会付费嘛，喷子才不会花这个钱，如果喷子付费来评论留言，至少能赚点钱，这比一个永远不会打赏的喷子好得多。</p><p>作者不用靠植入广告，就只写自己喜欢东西，给喜欢的读者看，还能有一些收入，这是多么的美好。</p><p>现在我有关注百多个有价值的公众号，如果他们全部开通付费阅读，我想我只会对下面这些公众号进行付费，只要他们每周更新一篇文章即可，最高愿意接受365元一年的付费阅读服务，毕竟穷。</p><p>这是我愿意付费阅读的一些公众号：</p><ul><li>冯大辉的「小道消息」</li><li>和菜头的「槽边往事」</li><li>曹政的「caoz的梦呓」</li><li>阿禅的「可能吧」</li><li>「老鹰说」</li></ul><p>他们都是个人号，具备个人色彩，有独立的观点，这是我所喜欢和看中的。</p><p>媒体号我想我只会选择「少数派」，谁叫我是果粉呢，谁叫「少数派」这么优秀呢。<br>ps：微博更适合媒体传播资讯。</p><p>当然还有很多优秀的作者，只是有的更新少，还有的写书，写书的作者我会去买他们的书。</p><hr><p>怎样选择你最应该阅读的内容，这是我的观点。</p><p>第一、内容肯定得是你喜欢的，不然也阅读不下去，何必强迫自己学习呢，学习本应该是愉快的。</p><p>第二、作者能持续写出优秀的东西–知识，知识是你一生都需要的东西。</p><p>第三、搞笑、娱乐、资讯等也许你常常观看阅读，但其实并没什么卵用，你可以抛开它们学点真正有用的东西，因为它们不重要（除非你的工作是这个）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 26 --&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws3.sinaimg.cn/large/006tKfTcgy1fldwiz8vvnj31kw0z5n6i.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;题图：日落后的广州&lt;/p&gt;
+&lt;p&gt;有传言说微信公众号准备推出付费阅
+      
+    
+    </summary>
+    
+    
+      <category term="微信" scheme="wissx.github.io/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 小白 - 软件入门篇</title>
+    <link href="wissx.github.io/2016/06/19/Mac%20%E5%B0%8F%E7%99%BD%20-%20%E8%BD%AF%E4%BB%B6%E5%85%A5%E9%97%A8%E7%AF%87/"/>
+    <id>wissx.github.io/2016/06/19/Mac 小白 - 软件入门篇/</id>
+    <published>2016-06-18T16:00:00.000Z</published>
+    <updated>2018-12-15T07:23:37.008Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 25 --><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fldwnf3qb3j31400p0gqn.jpg" alt=""></p><p>题图：我 MacBook Air 中部分 App</p><p>本文推荐一些我 Mac 中的基础 App</p><p>社交/通讯：TweetDeck、WeiboX、Telegram、微信、信息（自带）</p><p>文字编辑：备忘录（自带）、MWeb（Markdown）</p><p>办公套件：苹果的 Numbers、Pages、Keynote</p><p>图片工具：截图、ImageOptim（压缩图片）、LICEcap（录制GIF）、预览（自带）</p><p>播放器：网易云音乐、MPlayerX、VOX、QuickTime Player（可录制当前屏幕视频）</p><p>浏览器：Google Chrome<br>说到 Chrome 就推荐几个插件：Adblock Plus（广告屏蔽）、LastPass（密码管理器）、阅读模式（优化文章排版）</p><p>剪贴板工具：Paste</p><p>笔记工具：印象笔记</p><p>输入法：清歌输入法</p><p>软件卸载：AppCleaner</p><p>防休眠工具：Caffeine</p><p>压缩/解压：The Unarchiver</p><p>词典/翻译：有道词典、欧路词典</p><p>下载工具：Thunder（迅雷）、Folx GO</p><p>扩宽你的互联网世界：Lantern（蓝灯）</p><p>App 快速启动：Manico（快速启动与切换）</p><p>密码管理器：Master Password（多平台）</p><p>文件同步：BitTorrent Sync（多平台BT同步网盘）</p><p>窗口控制：SizeUp（快速改变和移动当前软件显示界面）</p><p>文字处理插件：PopClip（划词搜索）、Get Plain Text（清除剪贴板文字格式）</p><p>散热：smcFanControl（由于 MacBook Air / MacBook Pro 散热不佳，用这个来调节风扇的转速）</p><p>注：优先从 App Store 中下载软件，没有的就去官网下载。</p><p>这篇文章是用 MWeb 完成的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 25 --&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws2.sinaimg.cn/large/006tKfTcgy1fldwnf3qb3j31400p0gqn.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;题图：我 MacBook Air 中部分 App&lt;/p&gt;
+&lt;p&gt;本
+      
+    
+    </summary>
+    
+    
+      <category term="软件" scheme="wissx.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>停用朋友圈</title>
+    <link href="wissx.github.io/2016/06/02/%E5%81%9C%E7%94%A8%E6%9C%8B%E5%8F%8B%E5%9C%88/"/>
+    <id>wissx.github.io/2016/06/02/停用朋友圈/</id>
+    <published>2016-06-01T16:00:00.000Z</published>
+    <updated>2018-12-15T07:31:39.187Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 24 --><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fldwot9ebzj30um0h83zh.jpg" alt=""></p><p>30号我停用了朋友圈，这是一件好事。这几天来进入微信，再也看不到发现一栏的红点，轻松自在。</p><p>当然朋友圈的六一我也看不到，无所谓，甚至很开心，我并不关心六一，肯定又是一堆成年人装成小孩各种卖萌讨礼物讨红包之类的。</p><p>如果朋友圈信息质量奇高，那当然不要停用，我也不会停用，可惜圈子质量不够高，产生不了优质内容。</p><p>现在朋友圈劣质信息大于优质信息，也没什么人发生活状态，我也很少发，因为不想透露隐私或者我过得如果与他人无关。没什么可看的，每天都还有小红点骚扰，不如停用算了，清静。</p><p>不知你有没有听说过“你发出去的信息，你以为是正常的，其实别人都看不到，只有你能看到这条信息。”</p><p>不在国内社交网站上发言是一件好事，监控太严重了，毫无隐私，毫无言论自由，你想象一下有变态整天跟着你并把你的一举一动汇报给其他人的感觉。</p><p>同时少用国内的即时通信软件，可以选择 Telegram、iMessage，这俩都是点对点加密传输，隐私安全，简单高效。<br>虽然我这样说但难以做到，QQ早以放弃，微信不行，基本沟通都是用微信…<br>通信软件还得看你的联系人在哪里，都在微信你也脱离不了。</p><p>对于营销来说，国内应该有两个服务无法放弃，微信公众号和微博。这两个也是我重要的资讯来源。</p><p>微博我潜水，朋友圈我停用，文章还是要写的，资讯还是要看的。</p><p>写文章并不是一定要给别人看，最大的好处是可以沉淀自己的想法与思绪，对某些知识、技能或生活方式进行归纳总结。</p><p>当然，如果你看到了这篇文章并对你产生了一点帮助，这就最好了。</p><p>题图：朋友拍摄的，我觉得很赞</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- 24 --&gt;
+&lt;p&gt;&lt;img src=&quot;https://ws2.sinaimg.cn/large/006tKfTcgy1fldwot9ebzj30um0h83zh.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;30号我停用了朋友圈，这是一件好事。这几天来进入微信，再也看不到发
+      
+    
+    </summary>
+    
+    
+      <category term="微信" scheme="wissx.github.io/tags/%E5%BE%AE%E4%BF%A1/"/>
+    
+      <category term="社交" scheme="wissx.github.io/tags/%E7%A4%BE%E4%BA%A4/"/>
+    
+  </entry>
+  
+</feed>
