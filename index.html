@@ -144,7 +144,11 @@
 <p>清除缓存并部署服务器，然后打开 <a href="https://wissx.github.io">https://wissx.github.io</a> 成功。 </p>
 <h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>以 landscape 为例作修改，其他主题应该也差不多，请自行谷歌。</p>
 <h2 id="1、添加博客基本信息"><a href="#1、添加博客基本信息" class="headerlink" title="1、添加博客基本信息"></a>1、添加博客基本信息</h2><p>打开网站配置文件修改下列参数</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">博客名称</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">博客副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">博客描述</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">博客关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">你的名字</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"></span><br><span class="line"><span class="attr">url:</span> <span class="string">你的博客网址</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">博客名称</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">博客副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">博客描述</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">博客关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">你的名字</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">你的博客网址</span></span><br></pre></td></tr></table></figure>
+<p>设置7篇文章1个分页</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">index_generator:</span><br><span class="line">  path: &apos;&apos;</span><br><span class="line">  per_page: 7</span><br><span class="line">  order_by: -date</span><br></pre></td></tr></table></figure>
+<p>设置归档不分页</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">per_page: 0</span><br><span class="line">pagination_dir: page</span><br></pre></td></tr></table></figure>
 <h2 id="2、配置主题样式"><a href="#2、配置主题样式" class="headerlink" title="2、配置主题样式"></a>2、配置主题样式</h2><p>打开主题配置文件 _config.yml 修改下列参数</p>
 <h3 id="2-1、修改顶部菜单"><a href="#2-1、修改顶部菜单" class="headerlink" title="2.1、修改顶部菜单"></a>2.1、修改顶部菜单</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">主页:</span> <span class="string">/</span></span><br><span class="line">  <span class="string">关于:</span> <span class="string">/关于/</span></span><br><span class="line">  <span class="string">工作:</span> <span class="string">/tags/工作/</span></span><br><span class="line">  <span class="string">生活:</span> <span class="string">/tags/生活/</span></span><br><span class="line">  <span class="string">归档:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">rss:</span> <span class="string">/atom.xml</span></span><br></pre></td></tr></table></figure>
 <p>这是列在顶部的菜单页面，”关于”是自定义页面，需要创建相应的页面，工作、生活是标签页，只要你发布对应标签的文章就会自动呈现。</p>
@@ -190,7 +194,7 @@
 <p><code>hexo g</code></p>
 <p><code>hexo d</code></p>
 <h1 id="六、绑定个人域名"><a href="#六、绑定个人域名" class="headerlink" title="六、绑定个人域名"></a>六、绑定个人域名</h1><p>首先你得有一个域名，并在域名设置里把 DNS 服务器改为 DNSPOD 的 DNS 地址，f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
-<p>在 blog\source 文件夹下创建文件 CNAME，无后缀名，里面写上你的个人域名，再执行命令</p>
+<p>在 blog/themes/landscape/source 文件夹下创建文件 CNAME，无后缀名，里面写上你的个人域名，再执行命令</p>
 <p><code>hexo clean</code></p>
 <p><code>hexo g</code></p>
 <p><code>hexo d</code></p>
@@ -199,6 +203,27 @@
 <p>或者在终端 ping 你的网址也能得到 IP</p>
 <p>使用 DNSPOD 进行域名解析：<a href="https://www.dnspod.cn/console/dns" target="_blank" rel="noopener">https://www.dnspod.cn/console/dns</a></p>
 <p>添加记录类型 A 和 CHAME，如图</p>
+<table>
+<thead>
+<tr>
+<th>主机记录</th>
+<th>记录类型</th>
+<th>记录值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@</td>
+<td>A</td>
+<td>185.119.110.153</td>
+</tr>
+<tr>
+<td>www</td>
+<td>CNAME</td>
+<td>wissx.github.io</td>
+</tr>
+</tbody>
+</table>
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fy7crcboifj30m00ad0t0.jpg" alt=""></p>
 <p>生效时间：0-72小时，生效之后可用个人域名访问架设在 Github 的 Hexo 博客，Github 域名也能访问</p>
 <h1 id="七、功能配置"><a href="#七、功能配置" class="headerlink" title="七、功能配置"></a>七、功能配置</h1><h2 id="1、配置-RSS"><a href="#1、配置-RSS" class="headerlink" title="1、配置 RSS"></a>1、配置 RSS</h2><p>执行命令</p>
@@ -213,15 +238,15 @@
 <p>完成这两点还不够，想要站内搜索，要么移植 NexT 主题的本地搜索功能，要么配置谷歌百度收录，用搜索引擎来实现站内搜索，后者更简单。</p>
 <p>本地搜索我搞不定，搜索引擎我不想搞，就让它成为我的遗憾吧。</p>
 <h1 id="八、结尾"><a href="#八、结尾" class="headerlink" title="八、结尾"></a>八、结尾</h1><p>我不准备给博客配置评论分享、谷歌百度收录之类的，所以我不写这些教程了，网上有很多可参考的；</p>
-<p>颜色字体美化之类的我也不折腾了，但标题可以修改一下大小与颜色。</p>
-<p>这两个文件里可以修改博客标题 LOGO 的样式<br>blog/themes/landscape/source/css/_variables.styl （修改博客顶部图片中已操作）<br>blog/themes/landscape/source/css/_partial/header.styl</p>
-<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">text-decoration</span>: none</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">380</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0.5px</span> <span class="number">0.5px</span> <span class="number">#FDD835</span></span><br><span class="line"></span><br><span class="line">#logo</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: logo-size</span><br><span class="line">  <span class="attribute">line-height</span>: logo-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">5px</span></span><br></pre></td></tr></table></figure>
+<p>颜色字体美化之类的我也不折腾了，但可以修改一下标题大小与颜色。</p>
+<p>这两个文件里可以修改博客标题 LOGO 的样式<br>blog/themes/landscape/source/css/_variables.styl （修改博客顶部中已操作）<br>blog/themes/landscape/source/css/_partial/header.styl 如下</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">text-decoration</span>: none</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">380</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0.5px</span> <span class="number">0.5px</span> <span class="number">#FDD835</span></span><br><span class="line"></span><br><span class="line">#logo</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: logo-size</span><br><span class="line">  <span class="attribute">line-height</span>: logo-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">5px</span></span><br><span class="line">  </span><br><span class="line">#subtitle</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: subtitle-size</span><br><span class="line">  <span class="attribute">line-height</span>: subtitle-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">1px</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0px</span> <span class="number">0px</span></span><br></pre></td></tr></table></figure>
 <p>基于各种原因，这个教程有很多遗憾，但也差不多，从0到1算是完成了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpppzebh00338nhgu3tf6sm8" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjppr2d3c0034dvhgb99hh53i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
@@ -327,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/09/08/RSS 复兴 - 从认识到使用/" data-id="cjpppzea400058nhgmzejnini" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2018/09/08/RSS 复兴 - 从认识到使用/" data-id="cjppr2d260006dvhgpi8i84hy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSS/">RSS</a></li></ul>
@@ -390,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/04/07/香港旅游交通指南/" data-id="cjpppzeaw001v8nhg10khg7n0" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2018/04/07/香港旅游交通指南/" data-id="cjppr2d2x001wdvhg8gzgeyo8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游玩/">游玩</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/香港/">香港</a></li></ul>
@@ -470,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/10/01/My iPhone App/" data-id="cjpppzea300048nhgvf2ns6np" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/10/01/My iPhone App/" data-id="cjppr2d240005dvhg036q58au" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iPhone/">iPhone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
@@ -528,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/08/07/Trello 任务管理流程/" data-id="cjpppzea600098nhgn0yatoc7" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/08/07/Trello 任务管理流程/" data-id="cjppr2d28000advhgpfgfaqww" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
@@ -581,7 +606,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/06/08/ThinkVision X24 显示器上手/" data-id="cjpppzea500088nhgo00hxh7k" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/06/08/ThinkVision X24 显示器上手/" data-id="cjppr2d270009dvhgqdd6i8ns" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/显示器/">显示器</a></li></ul>
@@ -637,7 +662,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/06/06/值得买的苹果产品/" data-id="cjpppzeai000u8nhgj7exi2xp" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/06/06/值得买的苹果产品/" data-id="cjppr2d2j000vdvhgx5670s9i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple/">Apple</a></li></ul>
