@@ -2,6 +2,7 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
+  <meta name="google-site-verification" content="GmlPzcaimsuTsgLVzgN9Sml0cSrzyNEUaD8WKwYFF3M">
   
 
   
@@ -158,7 +159,7 @@
 <p>打开 blog/themes/landscape/layout/_widget 目录，复制 archive.ejs 文件为副本，改名为 links.ejs，找到代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;&lt;%= __(&apos;archive_a&apos;) %&gt;&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">      &lt;%- list_archives(&#123;show_count: theme.show_count, type: theme.archive_type&#125;) %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>修改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;链接&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;https://wissx.github.io/关于/&quot; title=&quot;about&quot;&gt;关于我&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;http://wissx.github.io/atom.xml&quot; title=&quot;rss&quot;&gt;RSS 订阅&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;dd&gt;&lt;img src=&quot;https://imgsa.baidu.com/forum/w%3D580/sign=8ff1b3caf6f2b211e42e8546fa816511/59af8ddda144ad34c64b523edda20cf430ad8524.jpg&quot; width=&quot;220&quot; height=&quot;100&quot; alt=&quot;&quot;&gt;&lt;/dd&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3 class=&quot;widget-title&quot;&gt;链接&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;widget&quot;&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;https://wissx.github.io/关于/&quot; title=&quot;about&quot;&gt;关于我&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a href=&quot;https://wissx.github.io/atom.xml&quot; title=&quot;rss&quot;&gt;RSS 订阅&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;dd&gt;&lt;img src=&quot;https://imgsa.baidu.com/forum/w%3D580/sign=8ff1b3caf6f2b211e42e8546fa816511/59af8ddda144ad34c64b523edda20cf430ad8524.jpg&quot; width=&quot;220&quot; height=&quot;100&quot; alt=&quot;&quot;&gt;&lt;/dd&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>用 li 或 dd 修改其中的内容，放你想放的链接或图片。</p>
 <h3 id="2-3、添加博客图标"><a href="#2-3、添加博客图标" class="headerlink" title="2.3、添加博客图标"></a>2.3、添加博客图标</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span> <span class="string">/favicon.png</span></span><br></pre></td></tr></table></figure>
 <p>找一个像素 128*128 的小图标作为博客图标，改名放到 blog/source 目录下。</p>
@@ -193,7 +194,7 @@
 <p><code>hexo clean</code></p>
 <p><code>hexo g</code></p>
 <p><code>hexo d</code></p>
-<h1 id="六、绑定个人域名"><a href="#六、绑定个人域名" class="headerlink" title="六、绑定个人域名"></a>六、绑定个人域名</h1><p>首先你得有一个域名，并在域名设置里把 DNS 服务器改为 DNSPOD 的 DNS 地址，f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
+<h1 id="六、绑定个人域名"><a href="#六、绑定个人域名" class="headerlink" title="六、绑定个人域名"></a>六、绑定个人域名</h1><p>首先你得有一个私有域名，并在域名设置里把 DNS 服务器改为 DNSPOD 的 DNS 地址，f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
 <p>在 blog/themes/landscape/source 文件夹下创建文件 CNAME，无后缀名，里面写上你的个人域名，再执行命令</p>
 <p><code>hexo clean</code></p>
 <p><code>hexo g</code></p>
@@ -246,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjppsv3890035mmhgani608ok" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpqdxgu500346zhgcl6h419u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
@@ -352,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/09/08/RSS 复兴 - 从认识到使用/" data-id="cjppsv3730006mmhgfdeapyco" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2018/09/08/RSS 复兴 - 从认识到使用/" data-id="cjpqdxgsy00066zhgbu8zz8od" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RSS/">RSS</a></li></ul>
@@ -415,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/04/07/香港旅游交通指南/" data-id="cjppsv37y001vmmhgxzjioaig" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2018/04/07/香港旅游交通指南/" data-id="cjpqdxgtr001w6zhg49izvzj2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游玩/">游玩</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/香港/">香港</a></li></ul>
@@ -495,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/10/01/My iPhone App/" data-id="cjppsv3710005mmhglyjfjhq0" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/10/01/My iPhone App/" data-id="cjpqdxgsx00056zhg1g16qbsq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iPhone/">iPhone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
@@ -553,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/08/07/Trello 任务管理流程/" data-id="cjppsv375000ammhgpkjfg5va" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/08/07/Trello 任务管理流程/" data-id="cjpqdxgt1000a6zhghtx18ohi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
@@ -606,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/06/08/ThinkVision X24 显示器上手/" data-id="cjppsv3740009mmhguzp9e9c0" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/06/08/ThinkVision X24 显示器上手/" data-id="cjpqdxgt000096zhgstz9vdbp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/显示器/">显示器</a></li></ul>
@@ -662,7 +663,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2017/06/06/值得买的苹果产品/" data-id="cjppsv37i000ummhg8cvjubck" class="article-share-link">Share</a>
+      <a data-url="wissx.github.io/2017/06/06/值得买的苹果产品/" data-id="cjpqdxgtb000t6zhg7iutjapp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple/">Apple</a></li></ul>
