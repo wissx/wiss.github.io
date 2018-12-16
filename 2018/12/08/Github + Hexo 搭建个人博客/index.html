@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言Hexo 新手写的新手教程，记录自己搭建 Hexo 的过程，所有信息均来自互联网 Hexo 官方中文教程：https://hexo.io/zh-cn/docs/ （不太懂，只看了一点） 对 Hexo 执行的终端命令都是在 blog 目录下执行（cd blog） 网站配置文件：./blog/_config.yml 主题配置文件：./blog/themes/landscape/_config.y">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fy7crcboifj30m00ad0t0.jpg">
-<meta property="og:updated_time" content="2018-12-16T04:20:38.954Z">
+<meta property="og:updated_time" content="2018-12-16T05:31:17.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github + Hexo 搭建个人博客">
 <meta name="twitter:description" content="前言Hexo 新手写的新手教程，记录自己搭建 Hexo 的过程，所有信息均来自互联网 Hexo 官方中文教程：https://hexo.io/zh-cn/docs/ （不太懂，只看了一点） 对 Hexo 执行的终端命令都是在 blog 目录下执行（cd blog） 网站配置文件：./blog/_config.yml 主题配置文件：./blog/themes/landscape/_config.y">
@@ -110,6 +110,7 @@
 <li>主题配置</li>
 <li>发布文章</li>
 <li>绑定域名</li>
+<li>谷歌收录</li>
 </ul>
 <h1 id="一、安装-Git-和-Node-js"><a href="#一、安装-Git-和-Node-js" class="headerlink" title="一、安装 Git 和 Node.js"></a>一、安装 Git 和 Node.js</h1><p>下载 Git 并安装：<a href="https://www.git-scm.com/downloads" target="_blank" rel="noopener">https://www.git-scm.com/downloads</a></p>
 <p>下载 Node.js 并安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
@@ -125,7 +126,7 @@
 <p><code>npm install</code></p>
 <p><code>hexo generate</code></p>
 <p><code>hexo server</code></p>
-<p>最后两条可简化成一条 <code>hexo s -g</code>（本地部署）</p>
+<p>可简化成 <code>hexo s</code></p>
 <p>看到 “INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.” 字样就表示已经生成网页文件并开启了本地服务器，现在浏览器打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览博客。（重设端口：<code>hexo -p 5000 server</code>）</p>
 <h1 id="三、注册-GitHub"><a href="#三、注册-GitHub" class="headerlink" title="三、注册 GitHub"></a>三、注册 GitHub</h1><p>登陆 GitHub 账号，点击右上角用户头像旁的 + 新建仓库 new repository，仓库名称 Repository name 必须为”你的GitHub用户名.github.io”，如  wissx.github.io。（这里我犯错了，导致出现问题）</p>
 <p>复制你的仓库地址，例如：<a href="https://github.com/wissx/wissx.github.io.git" target="_blank" rel="noopener">https://github.com/wissx/wissx.github.io.git</a></p>
@@ -144,9 +145,7 @@
 <p>如果你碰到错误，看一下代码意思，复制代码在网上查解决方法，真不能急，因为没用。</p>
 <p>我最后成功解决的方法是：<br>把 GitHub 仓库名改成相同的用户名，我原先并非一致。<br>在 GitHub 帐户设置里取消邮件隐私保护 Keep my email address private。<br>删除 blog 目录下隐藏文件夹 .deploy_git。</p>
 <p>再执行</p>
-<p><code>hexo clean</code></p>
-<p><code>hexo g</code></p>
-<p><code>hexo d</code></p>
+<p><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
 <p>清除缓存并部署服务器，然后打开 <a href="https://wissx.github.io" target="_blank" rel="noopener">https://wissx.github.io</a> 成功。 </p>
 <h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>以 landscape 为例作修改，其他主题应该也差不多，请自行谷歌。</p>
 <h2 id="1、添加博客基本信息"><a href="#1、添加博客基本信息" class="headerlink" title="1、添加博客基本信息"></a>1、添加博客基本信息</h2><p>打开网站配置文件修改下列参数</p>
@@ -181,12 +180,7 @@
 <p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
 <p><code>hexo s</code></p>
 <p>打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可预览效果</p>
-<p>NexT 是站内本地搜索，landscape 是引用谷歌搜索，这一点 landscape 很讨厌。</p>
-<p>想移植 NexT 主题的站内搜索功能，还没成功，看不太懂教程…</p>
-<ul>
-<li><a href="https://www.jianshu.com/p/63431e5ee944" target="_blank" rel="noopener">https://www.jianshu.com/p/63431e5ee944</a></li>
-<li><a href="https://www.jianshu.com/p/685bf59cde5e" target="_blank" rel="noopener">https://www.jianshu.com/p/685bf59cde5e</a></li>
-</ul>
+<p>NexT 是站内本地搜索，landscape 是外部引擎搜索，这一点 landscape 很讨厌。</p>
 <h1 id="五、发布文章和添加页面"><a href="#五、发布文章和添加页面" class="headerlink" title="五、发布文章和添加页面"></a>五、发布文章和添加页面</h1><p>新建文章</p>
 <p><code>hexo new post 文章标题</code></p>
 <p>在 blog/source/_posts/ 会看到新建的文章，找一个 Markdown 编辑器写好内容。</p>
@@ -196,14 +190,10 @@
 <p>配置网站、配置主题、写文章或编辑页面，完成后都执行命令</p>
 <p><code>hexo s</code></p>
 <p>再打开 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 预览博客，没问题就执行命令上传到服务器</p>
-<p><code>hexo clean</code></p>
-<p><code>hexo g</code></p>
-<p><code>hexo d</code></p>
+<p><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
 <h1 id="六、绑定个人域名"><a href="#六、绑定个人域名" class="headerlink" title="六、绑定个人域名"></a>六、绑定个人域名</h1><p>首先你得有一个私有域名，并在域名设置里把 DNS 服务器改为 DNSPOD 的 DNS 地址，f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
 <p>在 blog/themes/landscape/source 文件夹下创建文件 CNAME，无后缀名，里面写上你的个人域名，再执行命令</p>
-<p><code>hexo clean</code></p>
-<p><code>hexo g</code></p>
-<p><code>hexo d</code></p>
+<p><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
 <p>去下面网址查询你 Hexo 博客的 IP，例如查询 wissx.github.io 得到 185.199.110.153</p>
 <p>IP 查询：<a href="http://ip.tool.chinaz.com/、https://www.ipip.net/ip.html" target="_blank" rel="noopener">http://ip.tool.chinaz.com/、https://www.ipip.net/ip.html</a></p>
 <p>或者在终端 ping 你的网址也能得到 IP</p>
@@ -231,19 +221,38 @@
 </tbody>
 </table>
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fy7crcboifj30m00ad0t0.jpg" alt=""></p>
-<p>生效时间：0-72小时，生效之后可用个人域名访问架设在 Github 的 Hexo 博客，Github 域名也能访问</p>
+<p>生效时间：0-72小时，生效之后可用个人域名访问架设在 Github 的 Hexo 博客，原 Github 域名也能访问</p>
 <h1 id="七、功能配置"><a href="#七、功能配置" class="headerlink" title="七、功能配置"></a>七、功能配置</h1><h2 id="1、配置-RSS"><a href="#1、配置-RSS" class="headerlink" title="1、配置 RSS"></a>1、配置 RSS</h2><p>执行命令</p>
 <p><code>npm install hexo-generator-feed</code></p>
 <p>打开网站配置文件，添加下列配置</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">    path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">    limit:</span> <span class="number">15</span></span><br></pre></td></tr></table></figure>
-<h2 id="2、配置站内搜索功能"><a href="#2、配置站内搜索功能" class="headerlink" title="2、配置站内搜索功能"></a>2、配置站内搜索功能</h2><p><code>npm install hexo-generator-searchdb --save</code></p>
+<h2 id="2、配置站内本地搜索功能"><a href="#2、配置站内本地搜索功能" class="headerlink" title="2、配置站内本地搜索功能"></a>2、配置站内本地搜索功能</h2><p><code>npm install hexo-generator-searchdb --save</code></p>
 <p>编辑网站配置文件，新增以下内容到最底部：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></span><br><span class="line"><span class="attr">  field:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">  format:</span> <span class="string">html</span></span><br><span class="line"><span class="attr">  limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
 <p>编辑主题配置文件，启用本地搜索功能：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>完成这两点还不够，想要站内搜索，要么移植 NexT 主题的本地搜索功能，要么配置谷歌百度收录，用搜索引擎来实现站内搜索，后者更简单。</p>
-<p>本地搜索我搞不定，搜索引擎我不想搞，就让它成为我的遗憾吧。</p>
-<h1 id="八、结尾"><a href="#八、结尾" class="headerlink" title="八、结尾"></a>八、结尾</h1><p>我不准备给博客配置评论分享、谷歌百度收录之类的，所以我不写这些教程了，网上有很多可参考的；</p>
+<p>完成这两点还不够，想要站内本地搜索，需要移植 NexT 主题的本地搜索功能。</p>
+<p>NexT 主题站内搜索功能，我没成功，看不太懂教程…</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/63431e5ee944" target="_blank" rel="noopener">https://www.jianshu.com/p/63431e5ee944</a></li>
+<li><a href="https://www.jianshu.com/p/685bf59cde5e" target="_blank" rel="noopener">https://www.jianshu.com/p/685bf59cde5e</a></li>
+</ul>
+<p>本地搜索我搞不定，就让它成为我的遗憾吧。</p>
+<p>或者配置谷歌百度收录，用搜索引擎从外部来搜索站内资源，这更简单一些。</p>
+<h1 id="八、谷歌收录"><a href="#八、谷歌收录" class="headerlink" title="八、谷歌收录"></a>八、谷歌收录</h1><h2 id="1、验证网站"><a href="#1、验证网站" class="headerlink" title="1、验证网站"></a>1、验证网站</h2><p>打开谷歌站点控制台 <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener">https://search.google.com/search-console/about</a> 添加网站</p>
+<p>复制 HTML 元标记，用代码编辑器 Sublime 打开 blog/themes/landscape/layout/_partial/head.ejs 文件，添加 meta 代码到 head 标签下面并保存</p>
+<p><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
+<p>部署到服务器，返回谷歌控制台点击验证</p>
+<h2 id="2、站点地图"><a href="#2、站点地图" class="headerlink" title="2、站点地图"></a>2、站点地图</h2><p>安装 sitmap 插件</p>
+<p><code>npm install hexo-generator-sitemap --save</code></p>
+<p>修改网站配置文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="attr">http://wantox.com</span></span><br></pre></td></tr></table></figure>
+<p>再添加下列配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sitemap:</span> </span><br><span class="line"><span class="attr">  path:</span> <span class="string">sitemap.xml</span></span><br></pre></td></tr></table></figure>
+<p>重新部署网站</p>
+<p><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
+<p>返回谷歌站点控制台提交站点地图 sitemap.xml</p>
+<h1 id="九、结尾"><a href="#九、结尾" class="headerlink" title="九、结尾"></a>九、结尾</h1><p>我不准备给博客配置评论分享、百度收录之类的，所以我不写这些教程了，网上有很多可参考的；</p>
 <p>颜色字体美化之类的我也不折腾了，但可以修改一下标题大小与颜色。</p>
 <p>这两个文件里可以修改博客标题 LOGO 的样式<br>blog/themes/landscape/source/css/_variables.styl （修改博客顶部中已操作）<br>blog/themes/landscape/source/css/_partial/header.styl 如下</p>
 <figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">text-decoration</span>: none</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">380</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0.5px</span> <span class="number">0.5px</span> <span class="number">#FDD835</span></span><br><span class="line"></span><br><span class="line">#logo</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: logo-size</span><br><span class="line">  <span class="attribute">line-height</span>: logo-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">5px</span></span><br><span class="line">  </span><br><span class="line">#subtitle</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: subtitle-size</span><br><span class="line">  <span class="attribute">line-height</span>: subtitle-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">1px</span></span><br><span class="line">  <span class="attribute">text-shadow</span>: <span class="number">0px</span> <span class="number">0px</span></span><br></pre></td></tr></table></figure>
@@ -252,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wantox.com/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpqfgc1c0034duhglp86gklj" class="article-share-link">Share</a>
+      <a data-url="http://wantox.com/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpqgdrjw0034gahgvrgxy9h1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
