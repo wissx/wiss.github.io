@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   <meta name="google-site-verification" content="GmlPzcaimsuTsgLVzgN9Sml0cSrzyNEUaD8WKwYFF3M">
+  <meta name="google-site-verification" content="Fc1kD1E7fgi6F49l4j6gJcGAu3RLEvIdTEZ0m2qmLCc">
   
 
   
@@ -12,7 +13,7 @@
 <meta name="keywords" content="Hexo,博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Github + Hexo 搭建个人博客">
-<meta property="og:url" content="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/index.html">
+<meta property="og:url" content="http://wantox.com/2018/12/08/Github + Hexo 搭建个人博客/index.html">
 <meta property="og:site_name" content="弋山客">
 <meta property="og:description" content="前言Hexo 新手写的新手教程，记录自己搭建 Hexo 的过程，所有信息均来自互联网 Hexo 官方中文教程：https://hexo.io/zh-cn/docs/ （不太懂，只看了一点） 对 Hexo 执行的终端命令都是在 blog 目录下执行（cd blog） 网站配置文件：./blog/_config.yml 主题配置文件：./blog/themes/landscape/_config.y">
 <meta property="og:locale" content="zh-CN">
@@ -68,7 +69,7 @@
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="wissx.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wantox.com"></form>
       </div>
     </div>
   </div>
@@ -138,7 +139,7 @@
 <p>上面两条可简化成</p>
 <p><code>hexo g</code></p>
 <p><code>hexo d</code></p>
-<p>顺利的话可以成功访问你的博客地址 <a href="https://wissx.github.io">https://wissx.github.io</a></p>
+<p>顺利的话可以成功访问你的博客地址 <a href="https://wissx.github.io" target="_blank" rel="noopener">https://wissx.github.io</a></p>
 <p>若执行 <code>hexo g</code> 出错则执行 <code>npm install hexo --save</code>，若执行 <code>hexo d</code> 出错则执行 <code>npm install hexo-deployer-git --save</code>，再执行 <code>hexo g</code> 和 <code>hexo d</code>。</p>
 <p>但我执行 <code>hexo d</code> 后遇到一个接一个的错误，网上查方法解决，一直出现各种不同的错误，搞了两三个小时，都疯了。</p>
 <p>如果你碰到错误，看一下代码意思，复制代码在网上查解决方法，真不能急，因为没用。</p>
@@ -147,7 +148,7 @@
 <p><code>hexo clean</code></p>
 <p><code>hexo g</code></p>
 <p><code>hexo d</code></p>
-<p>清除缓存并部署服务器，然后打开 <a href="https://wissx.github.io">https://wissx.github.io</a> 成功。 </p>
+<p>清除缓存并部署服务器，然后打开 <a href="https://wissx.github.io" target="_blank" rel="noopener">https://wissx.github.io</a> 成功。 </p>
 <h1 id="四、主题配置"><a href="#四、主题配置" class="headerlink" title="四、主题配置"></a>四、主题配置</h1><p>以 landscape 为例作修改，其他主题应该也差不多，请自行谷歌。</p>
 <h2 id="1、添加博客基本信息"><a href="#1、添加博客基本信息" class="headerlink" title="1、添加博客基本信息"></a>1、添加博客基本信息</h2><p>打开网站配置文件修改下列参数</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">博客名称</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">博客副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">博客描述</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">博客关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">你的名字</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">你的博客网址</span></span><br></pre></td></tr></table></figure>
@@ -252,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="wissx.github.io/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpqe0bgh00347ohgksj8e8u7" class="article-share-link">Share</a>
+      <a data-url="http://wantox.com/2018/12/08/Github + Hexo 搭建个人博客/" data-id="cjpqew8yh0034b0hgob87nn3h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
