@@ -365,9 +365,8 @@ body {
 #logo,
 #subtitle {
   text-decoration: none;
-  color: #000;
+  color: rgba(0,0,0,0);
   font-weight: 380;
-  text-shadow: 0.5px 0.5px #fdd835;
 }
 #logo {
   font-size: 50px;
@@ -378,7 +377,6 @@ body {
   font-size: 18px;
   line-height: 18px;
   letter-spacing: 1px;
-  text-shadow: 0px 0px;
 }
 #subtitle-wrap {
   margin-top: 18px;
@@ -860,7 +858,8 @@ a.article-title:hover {
 .article-share-twitter,
 .article-share-facebook,
 .article-share-pinterest,
-.article-share-google {
+.article-share-google,
+.article-share-linkedin {
   width: 50px;
   height: 36px;
   display: block;
@@ -872,7 +871,8 @@ a.article-title:hover {
 .article-share-twitter:before,
 .article-share-facebook:before,
 .article-share-pinterest:before,
-.article-share-google:before {
+.article-share-google:before,
+.article-share-linkedin:before {
   font-size: 20px;
   font-family: FontAwesome;
   width: 20px;
@@ -887,7 +887,8 @@ a.article-title:hover {
 .article-share-twitter:hover,
 .article-share-facebook:hover,
 .article-share-pinterest:hover,
-.article-share-google:hover {
+.article-share-google:hover,
+.article-share-linkedin:hover {
   color: #fff;
 }
 .article-share-twitter:before {
@@ -917,6 +918,13 @@ a.article-title:hover {
 .article-share-google:hover {
   background: #dd4b39;
   text-shadow: 0 1px #be3221;
+}
+.article-share-linkedin:before {
+  content: "\f0e1";
+}
+.article-share-linkedin:hover {
+  background: #0077b5;
+  text-shadow: 0 1px #005f91;
 }
 .article-gallery {
   background: #000;
