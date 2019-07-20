@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="http://wantox.com/"/>
-  <updated>2019-05-11T03:23:21.474Z</updated>
+  <updated>2019-07-20T07:22:55.055Z</updated>
   <id>http://wantox.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows macOS 双系统安装，黑苹果驱动优化</title>
+    <link href="http://wantox.com/post/20190720-Hackintosh-Windows.html"/>
+    <id>http://wantox.com/post/20190720-Hackintosh-Windows.html</id>
+    <published>2019-07-19T16:00:00.000Z</published>
+    <updated>2019-07-20T07:22:55.055Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><p>macOS 镜像<br>Etcher 或 TransMac 写盘工具<br>制作 macOS 启动U盘（至少 16G）<br>PE 工具</p><p><strong>更改 BIOS 设置</strong><br>禁用：Vt-d、LAN PXE Boot、Network Stack、Wake on LAN、Secure Boot, Fast Boot<br>设置启动项：Bios Features Windows 8/10 Features 为 Other OS<br>设置启动项：Bios Features Storage Boot Option Control 为 UEFI Only<br>可能还有其他需要更改的选项，查自己主板</p><h2 id="二、分区"><a href="#二、分区" class="headerlink" title="二、分区"></a>二、分区</h2><p>进入U盘 PE，打开分区工具 Diskgenius<br>固态硬盘改为 GPT 分区类型，依次新建四个分区（我的硬盘为 240G）</p><ul><li>ESP 300M FAT16（Clover 引导分区，分区改名 EFI）</li><li>NTFS 70G HTFS（Windows10，C盘）</li><li>HFS+ 120G APFS（用 macOS 磁盘工具抹掉来格式化）</li><li>exFAT 40G exFAT（公共分区，文件交换）</li></ul><p>EFI 分区只有一个目录 EFI，里面有四个文件夹，其中三个文件夹需要手动复制进来  </p><ul><li>APPLE（自动生成，无需创建）  </li><li>BOOT（macOS 启动U盘内 EFI-BOOT）  </li><li>Clover（macOS 启动U盘内 EFI-Clover）  </li><li>Microsoft（Windows10 系统中 C-EFI-Microsoft）</li></ul><h2 id="三、安装-Windows"><a href="#三、安装-Windows" class="headerlink" title="三、安装 Windows"></a>三、安装 Windows</h2><p>右键选择 Windows10 镜像加载，用 WinNTSetup 选择其中安装文件 install.wim 来安装系统，不重启不关机<br>进度完成后，拷贝C盘分区 EFI 目录下的 Microsoft 文件夹到固态硬盘 EFI 分区 EFI 目录下，关机</p><h2 id="四、安装-macOS"><a href="#四、安装-macOS" class="headerlink" title="四、安装 macOS"></a>四、安装 macOS</h2><p>插上 macOS 启动U盘，进入 Clover 界面，选择U盘回车<br>进入 macOS 磁盘工具，选择 HFS+ 分区格式成 APFS，安装 macOS<br>会自动重启进入 Clover 界面，选择 macOS 分区回车，继续安装 macOS<br>再次自动重启进入 Clover 界面，选择 macOS 分区回车，进入系统</p><ul><li>第一次 Clover 界面，选择 U盘安装</li><li>第二次 Clover 界面，选择 macOS 安装</li><li>第三次 Clover 界面，选择 macOS 进入</li></ul><h2 id="五、完成"><a href="#五、完成" class="headerlink" title="五、完成"></a>五、完成</h2><p>重启电脑，进入U盘 PE，插上 macOS 启动U盘，拷贝 macOS 引导文件 Clover、BOOT 文件夹到固态硬盘 EFI 分区 EFI 目录下<br>重启电脑进入 Windows 系统，安装 EasyUEFI 添加 Clover 引导文件 EFI-CLOVER-CLOVERRX64.EFI<br>双系统安装完成，开机会进入 Clover 引导界面，可以选择进入 Windows 或 macOS<br>macOS 能正常进入后，在 PE 里把整个 EFI 文件夹保存一份，后面操作出现问题可以替换回去<br>如果熟练的话，两个小时左右，就可以完成安装双系统（不包括优化）</p><h2 id="六、优化"><a href="#六、优化" class="headerlink" title="六、优化"></a>六、优化</h2><p>EFI-Clover 目录下的重要文件夹，匆删</p><ul><li>ACPI</li><li>drivers64UEFI</li><li>kexts（驱动，删减优化）</li><li>themes（主题，可添加）</li><li>tools</li><li>config.plist（Clover 配置文件）</li></ul><h4 id="Clover-配置"><a href="#Clover-配置" class="headerlink" title="Clover 配置"></a>Clover 配置</h4><p>下载 Clover Configurator 软件<br>Mount EFI 菜单加载 EFI 分区，打开 EFI-Clover 路径下 config.plist 文件<br>更改设置后关闭点保存，重启生效</p><p><strong>删除隐藏多余引导</strong><br>Gui 菜单 Scan 选项，取消勾选 Tool、Legacy、Kernel、Linux<br>Hide Volume 选项，手动输入添加 Recovery、Preboot</p><p><strong>更换 Clover 主题</strong><br>Gui 菜单 Scan 选项，复制主题名称到 Theme 框中，主题在 EFI-Clover-theme 路径下</p><h4 id="驱动优化"><a href="#驱动优化" class="headerlink" title="驱动优化"></a>驱动优化</h4><p>我的笔记本型号是 ThinkPad E470c 20H3A00PCD<br>下载需要用的驱动，放进 kexts-other 文件夹，不需要的删除</p><p><strong>声卡</strong>型号是 cx20753<br>声卡驱动有两种，二选一，VoodooHDA 和 AppleALC<br>用 VoodooHDA 直接成功<br>用 AppleALC 需要在 Clover Configurator 软件 Devices 菜单 Audio 选项 Inject 框输入3，并勾选后面两项（扬声器成功，麦克风失败，懒得测试了）</p><p>AppleALC 声卡 ID 查询<br><a href="https://github.com/acidanthera/AppleALC/wiki/Supported-codecs" target="_blank" rel="noopener">https://github.com/acidanthera/AppleALC/wiki/Supported-codecs</a></p><p>F1-12 的媒体键/音量键不对应 macOS 原生操作，按 FN+ESC 切换，用 Windows 系统再切换回来</p><p><strong>触摸板</strong>驱动有两种，二选一，VoodooPS2Controller 和 ApplePS2SmartTouchPad<br>我用 VoodooPS2Controller 成功，但不完美，偏好设置里的触摸板设置无法使用<br>ApplePS2SmartTouchPad 好像问题更多</p><p><strong>无线网卡</strong>是 BCM94352z/dw1560（自己更换的）<br>用下面四个驱动成功，AirDrop、Magic Trackpad、蓝牙耳机都正常使用（Handoff 成功，但剪贴板同步经常失灵；睡眠熄灭屏幕后 WIFI 无法开启，只能重启，建议永不熄屏）</p><ul><li>BrcmPatchRAM2</li><li>BrcmFirmwareData</li><li>AirportBrcmFixup</li><li>BT4LEContiunityFixup</li></ul><p><strong>其他重要驱动</strong></p><ul><li>ACPIBatteryManager</li><li>FakeSMC</li><li>Lilu（依赖）</li><li>RealtekRTL8111</li><li>USBInjectAll</li><li>WhateverGreen（显卡综合修复）</li></ul><p>出现 拖影、掉帧、卡顿，需要<strong>给缓冲帧打补丁</strong>，下面是我参考的教程，完美解决<br><a href="https://www.youtube.com/watch?v=PiA4cng5Ffw" target="_blank" rel="noopener">https://www.youtube.com/watch?v=PiA4cng5Ffw</a><br>黑果小兵 hackintool<br><a href="https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html" target="_blank" rel="noopener">https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html</a></p><p>我未能解决的问题</p><ul><li>电池电量不显示</li><li>小红点漂移</li><li>触摸板手势</li></ul><p>我觉得已经算完美了，就这样吧</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、准备&quot;&gt;&lt;a href=&quot;#一、准备&quot; class=&quot;headerlink&quot; title=&quot;一、准备&quot;&gt;&lt;/a&gt;一、准备&lt;/h2&gt;&lt;p&gt;macOS 镜像&lt;br&gt;Etcher 或 TransMac 写盘工具&lt;br&gt;制作 macOS 启动U盘（至少 16G）&lt;br
+      
+    
+    </summary>
+    
+    
+      <category term="黑苹果" scheme="http://wantox.com/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+    
+      <category term="Apple" scheme="http://wantox.com/tags/Apple/"/>
+    
+  </entry>
   
   <entry>
     <title>我的群晖NAS使用方法，黑群晖安装，媒体服务器PLEX，内网穿透Zerotier</title>
@@ -392,31 +417,6 @@
     
     
       <category term="iPhone" scheme="http://wantox.com/tags/iPhone/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于微信付费阅读</title>
-    <link href="http://wantox.com/post/20160703-index.html"/>
-    <id>http://wantox.com/post/20160703-index.html</id>
-    <published>2016-07-02T16:00:00.000Z</published>
-    <updated>2019-06-29T06:21:58.065Z</updated>
-    
-    <content type="html"><![CDATA[<!-- 26 --><p>有传言说微信公众号准备推出付费阅读功能，只能付费才能阅读或者订阅公众号。</p><p>付费后才能阅读文章，作者更积极，更愿写出好东西（所谓真正的干货），作者只需服务付费的一批读者，不会看到喷子们的恶心评论和留言，读者喜欢才会付费嘛，喷子才不会花这个钱，如果喷子付费来评论留言，至少能赚点钱，这比一个永远不会打赏的喷子好得多。</p><p>作者不用靠植入广告，就只写自己喜欢东西，给喜欢的读者看，还能有一些收入，这是多么的美好。</p><p>现在我有关注百多个有价值的公众号，如果他们全部开通付费阅读，我想我只会对下面这些公众号进行付费，只要他们每周更新一篇文章即可，最高愿意接受365元一年的付费阅读服务，毕竟穷。</p><p>这是我愿意付费阅读的一些公众号：</p><ul><li>冯大辉的「小道消息」</li><li>和菜头的「槽边往事」</li><li>曹政的「caoz的梦呓」</li><li>阿禅的「可能吧」</li><li>「老鹰说」</li></ul><p>他们都是个人号，具备个人色彩，有独立的观点，这是我所喜欢和看中的。</p><p>媒体号我想我只会选择「少数派」，谁叫我是果粉呢，谁叫「少数派」这么优秀呢。<br>ps：微博更适合媒体传播资讯。</p><p>当然还有很多优秀的作者，只是有的更新少，还有的写书，写书的作者我会去买他们的书。</p><hr><p>怎样选择你最应该阅读的内容，这是我的观点。</p><p>第一、内容肯定得是你喜欢的，不然也阅读不下去，何必强迫自己学习呢，学习本应该是愉快的。</p><p>第二、作者能持续写出优秀的东西–知识，知识是你一生都需要的东西。</p><p>第三、搞笑、娱乐、资讯等也许你常常观看阅读，但其实并没什么卵用，你可以抛开它们学点真正有用的东西，因为它们不重要（除非你的工作是这个）。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;!-- 26 --&gt;
-&lt;p&gt;有传言说微信公众号准备推出付费阅读功能，只能付费才能阅读或者订阅公众号。&lt;/p&gt;
-&lt;p&gt;付费后才能阅读文章，作者更积极，更愿写出好东西（所谓真正的干货），作者只需服务付费的一批读者，不会看到喷子们的恶心评论和留言，读者喜欢才会付费嘛，喷子才不会花这个
-      
-    
-    </summary>
-    
-    
-      <category term="微信" scheme="http://wantox.com/tags/%E5%BE%AE%E4%BF%A1/"/>
     
   </entry>
   

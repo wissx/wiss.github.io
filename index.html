@@ -69,7 +69,110 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-20190416我的群晖NAS使用方法，黑群晖系统安装，媒体服务器PLEX，内网穿透Zerotier" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-20190720-Windows macOS 双系统安装，黑苹果驱动优化" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/post/20190720-Hackintosh-Windows.html" class="article-date">
+  <time datetime="2019-07-19T16:00:00.000Z" itemprop="datePublished">2019-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/post/20190720-Hackintosh-Windows.html">Windows macOS 双系统安装，黑苹果驱动优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><p>macOS 镜像<br>Etcher 或 TransMac 写盘工具<br>制作 macOS 启动U盘（至少 16G）<br>PE 工具</p>
+<p><strong>更改 BIOS 设置</strong><br>禁用：Vt-d、LAN PXE Boot、Network Stack、Wake on LAN、Secure Boot, Fast Boot<br>设置启动项：Bios Features Windows 8/10 Features 为 Other OS<br>设置启动项：Bios Features Storage Boot Option Control 为 UEFI Only<br>可能还有其他需要更改的选项，查自己主板</p>
+<h2 id="二、分区"><a href="#二、分区" class="headerlink" title="二、分区"></a>二、分区</h2><p>进入U盘 PE，打开分区工具 Diskgenius<br>固态硬盘改为 GPT 分区类型，依次新建四个分区（我的硬盘为 240G）</p>
+<ul>
+<li>ESP 300M FAT16（Clover 引导分区，分区改名 EFI）</li>
+<li>NTFS 70G HTFS（Windows10，C盘）</li>
+<li>HFS+ 120G APFS（用 macOS 磁盘工具抹掉来格式化）</li>
+<li>exFAT 40G exFAT（公共分区，文件交换）</li>
+</ul>
+<p>EFI 分区只有一个目录 EFI，里面有四个文件夹，其中三个文件夹需要手动复制进来  </p>
+<ul>
+<li>APPLE（自动生成，无需创建）  </li>
+<li>BOOT（macOS 启动U盘内 EFI-BOOT）  </li>
+<li>Clover（macOS 启动U盘内 EFI-Clover）  </li>
+<li>Microsoft（Windows10 系统中 C-EFI-Microsoft）</li>
+</ul>
+<h2 id="三、安装-Windows"><a href="#三、安装-Windows" class="headerlink" title="三、安装 Windows"></a>三、安装 Windows</h2><p>右键选择 Windows10 镜像加载，用 WinNTSetup 选择其中安装文件 install.wim 来安装系统，不重启不关机<br>进度完成后，拷贝C盘分区 EFI 目录下的 Microsoft 文件夹到固态硬盘 EFI 分区 EFI 目录下，关机</p>
+<h2 id="四、安装-macOS"><a href="#四、安装-macOS" class="headerlink" title="四、安装 macOS"></a>四、安装 macOS</h2><p>插上 macOS 启动U盘，进入 Clover 界面，选择U盘回车<br>进入 macOS 磁盘工具，选择 HFS+ 分区格式成 APFS，安装 macOS<br>会自动重启进入 Clover 界面，选择 macOS 分区回车，继续安装 macOS<br>再次自动重启进入 Clover 界面，选择 macOS 分区回车，进入系统</p>
+<ul>
+<li>第一次 Clover 界面，选择 U盘安装</li>
+<li>第二次 Clover 界面，选择 macOS 安装</li>
+<li>第三次 Clover 界面，选择 macOS 进入</li>
+</ul>
+<h2 id="五、完成"><a href="#五、完成" class="headerlink" title="五、完成"></a>五、完成</h2><p>重启电脑，进入U盘 PE，插上 macOS 启动U盘，拷贝 macOS 引导文件 Clover、BOOT 文件夹到固态硬盘 EFI 分区 EFI 目录下<br>重启电脑进入 Windows 系统，安装 EasyUEFI 添加 Clover 引导文件 EFI-CLOVER-CLOVERRX64.EFI<br>双系统安装完成，开机会进入 Clover 引导界面，可以选择进入 Windows 或 macOS<br>macOS 能正常进入后，在 PE 里把整个 EFI 文件夹保存一份，后面操作出现问题可以替换回去<br>如果熟练的话，两个小时左右，就可以完成安装双系统（不包括优化）</p>
+<h2 id="六、优化"><a href="#六、优化" class="headerlink" title="六、优化"></a>六、优化</h2><p>EFI-Clover 目录下的重要文件夹，匆删</p>
+<ul>
+<li>ACPI</li>
+<li>drivers64UEFI</li>
+<li>kexts（驱动，删减优化）</li>
+<li>themes（主题，可添加）</li>
+<li>tools</li>
+<li>config.plist（Clover 配置文件）</li>
+</ul>
+<h4 id="Clover-配置"><a href="#Clover-配置" class="headerlink" title="Clover 配置"></a>Clover 配置</h4><p>下载 Clover Configurator 软件<br>Mount EFI 菜单加载 EFI 分区，打开 EFI-Clover 路径下 config.plist 文件<br>更改设置后关闭点保存，重启生效</p>
+<p><strong>删除隐藏多余引导</strong><br>Gui 菜单 Scan 选项，取消勾选 Tool、Legacy、Kernel、Linux<br>Hide Volume 选项，手动输入添加 Recovery、Preboot</p>
+<p><strong>更换 Clover 主题</strong><br>Gui 菜单 Scan 选项，复制主题名称到 Theme 框中，主题在 EFI-Clover-theme 路径下</p>
+<h4 id="驱动优化"><a href="#驱动优化" class="headerlink" title="驱动优化"></a>驱动优化</h4><p>我的笔记本型号是 ThinkPad E470c 20H3A00PCD<br>下载需要用的驱动，放进 kexts-other 文件夹，不需要的删除</p>
+<p><strong>声卡</strong>型号是 cx20753<br>声卡驱动有两种，二选一，VoodooHDA 和 AppleALC<br>用 VoodooHDA 直接成功<br>用 AppleALC 需要在 Clover Configurator 软件 Devices 菜单 Audio 选项 Inject 框输入3，并勾选后面两项（扬声器成功，麦克风失败，懒得测试了）</p>
+<p>AppleALC 声卡 ID 查询<br><a href="https://github.com/acidanthera/AppleALC/wiki/Supported-codecs" target="_blank" rel="noopener">https://github.com/acidanthera/AppleALC/wiki/Supported-codecs</a></p>
+<p>F1-12 的媒体键/音量键不对应 macOS 原生操作，按 FN+ESC 切换，用 Windows 系统再切换回来</p>
+<p><strong>触摸板</strong>驱动有两种，二选一，VoodooPS2Controller 和 ApplePS2SmartTouchPad<br>我用 VoodooPS2Controller 成功，但不完美，偏好设置里的触摸板设置无法使用<br>ApplePS2SmartTouchPad 好像问题更多</p>
+<p><strong>无线网卡</strong>是 BCM94352z/dw1560（自己更换的）<br>用下面四个驱动成功，AirDrop、Magic Trackpad、蓝牙耳机都正常使用（Handoff 成功，但剪贴板同步经常失灵；睡眠熄灭屏幕后 WIFI 无法开启，只能重启，建议永不熄屏）</p>
+<ul>
+<li>BrcmPatchRAM2</li>
+<li>BrcmFirmwareData</li>
+<li>AirportBrcmFixup</li>
+<li>BT4LEContiunityFixup</li>
+</ul>
+<p><strong>其他重要驱动</strong></p>
+<ul>
+<li>ACPIBatteryManager</li>
+<li>FakeSMC</li>
+<li>Lilu（依赖）</li>
+<li>RealtekRTL8111</li>
+<li>USBInjectAll</li>
+<li>WhateverGreen（显卡综合修复）</li>
+</ul>
+<p>出现 拖影、掉帧、卡顿，需要<strong>给缓冲帧打补丁</strong>，下面是我参考的教程，完美解决<br><a href="https://www.youtube.com/watch?v=PiA4cng5Ffw" target="_blank" rel="noopener">https://www.youtube.com/watch?v=PiA4cng5Ffw</a><br>黑果小兵 hackintool<br><a href="https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html" target="_blank" rel="noopener">https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html</a></p>
+<p>我未能解决的问题</p>
+<ul>
+<li>电池电量不显示</li>
+<li>小红点漂移</li>
+<li>触摸板手势</li>
+</ul>
+<p>我觉得已经算完美了，就这样吧</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple/">Apple</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/黑苹果/">黑苹果</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20190416-我的群晖NAS使用方法，黑群晖系统安装，媒体服务器PLEX，内网穿透Zerotier" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/post/20190416-Black-Synology-Nas.html" class="article-date">
   <time datetime="2019-04-15T16:00:00.000Z" itemprop="datePublished">2019-04-16</time>
@@ -671,65 +774,6 @@
 
 
   
-    <article id="post-Trello 任务管理流程" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/post/20170807-index.html" class="article-date">
-  <time datetime="2017-08-06T16:00:00.000Z" itemprop="datePublished">2017-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/post/20170807-index.html">Trello 我的任务管理流程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- 34 -->
-<!-- ![](https://ws4.sinaimg.cn/large/006tNc79ly1fiaft4y0lhj30zk0k00t6.jpg) -->
-<p><img src="https://i.loli.net/2019/06/29/5d16fcd18afc173982.jpg" alt=""></p>
-<p>如果你每天接收各种任务，处理各种事情，这个任务管理/登记流程也许值得一试。</p>
-<p>在 Trello 创建一个待办任务列表¹、一个任务封存列表²、几个任务分类列表³。</p>
-<p>每天把所有任务添加到待办列表，一个任务一个卡片，然后一个个去做，做完就移动到封存列表。</p>
-<p>待办任务当天没做完，下班前就在任务卡片上补充任务要点，这利于之后快速完成任务，并把任务分类，清空待办列表。</p>
-<p>第二天继续添加待办任务并处理之前未完成的分类任务。</p>
-<p>这套工作流程很像 To-Do List，但有个最大的区别是，这套流程没有铃声提醒功能，不用设置开始时间、完成时间、不用打勾来让任务消失，适合无固定完成时间、每日接任务、在最短时间完成、任务多且繁杂的工作。</p>
-<p>团队也可以使用这套流程，接到任务你就把它添加到待办列表，通知团队成员去完成任务，当天没完成的任务下班前就分类整理，并补充详细信息（方便完成任务），添加适合去完成此任务的成员，分类任务就让任务成员来跟进处理。</p>
-<p>任务流程这样就走通了。</p>
-<p>任务流程演变：</p>
-<p>最开始我在备忘录里记任务，发现管理很麻烦。</p>
-<p>后来改用 Trello 来分类记录任务，发现在接收任务时就进行任务列表分类是一件很没效率的事。<br>很多任务当天就能完成，不需要分类，完成后直接移动到封存列表即可。分类需要思考，需要补充信息让其更清晰，不然分类没有意义。</p>
-<p>现在把接收到的任务添加到待办列表，当天完成不了，再分类处理，工作效率高很多，操作流程也更简洁了。</p>
-<hr>
-<ol>
-<li>待办列表用作收集当天任务。</li>
-<li>封存列表用作归档以便日后方便查找。</li>
-<li>分类列表用于任务分类，建三个左右比较合适，分类让任务更清晰，同时缓解待办列表的任务数量。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Trello/">Trello</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -760,6 +804,10 @@
       <ul>
         
           <li>
+            <a href="/post/20190720-Hackintosh-Windows.html">Windows macOS 双系统安装，黑苹果驱动优化</a>
+          </li>
+        
+          <li>
             <a href="/post/20190416-Black-Synology-Nas.html">我的群晖NAS使用方法，黑群晖安装，媒体服务器PLEX，内网穿透Zerotier</a>
           </li>
         
@@ -775,10 +823,6 @@
             <a href="/post/20180908-rss-revival-know-use.html">RSS 复兴 - 从认识到使用</a>
           </li>
         
-          <li>
-            <a href="/post/20180407-index.html">香港旅游交通指南</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -788,7 +832,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Apple/" style="font-size: 15px;">Apple</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/NAS/" style="font-size: 10px;">NAS</a> <a href="/tags/PLEX/" style="font-size: 10px;">PLEX</a> <a href="/tags/RSS/" style="font-size: 10px;">RSS</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/Zerotier/" style="font-size: 10px;">Zerotier</a> <a href="/tags/iPhone/" style="font-size: 17.5px;">iPhone</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/产品/" style="font-size: 12.5px;">产品</a> <a href="/tags/兴趣/" style="font-size: 10px;">兴趣</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/团队/" style="font-size: 10px;">团队</a> <a href="/tags/基金/" style="font-size: 10px;">基金</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/广州/" style="font-size: 10px;">广州</a> <a href="/tags/微信/" style="font-size: 12.5px;">微信</a> <a href="/tags/微博/" style="font-size: 10px;">微博</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/情怀/" style="font-size: 10px;">情怀</a> <a href="/tags/手机/" style="font-size: 12.5px;">手机</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/播客/" style="font-size: 10px;">播客</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/早餐/" style="font-size: 10px;">早餐</a> <a href="/tags/显示器/" style="font-size: 10px;">显示器</a> <a href="/tags/游玩/" style="font-size: 12.5px;">游玩</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/社交/" style="font-size: 12.5px;">社交</a> <a href="/tags/群晖/" style="font-size: 10px;">群晖</a> <a href="/tags/节日/" style="font-size: 10px;">节日</a> <a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/香港/" style="font-size: 10px;">香港</a>
+      <a href="/tags/Apple/" style="font-size: 17.5px;">Apple</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/NAS/" style="font-size: 10px;">NAS</a> <a href="/tags/PLEX/" style="font-size: 10px;">PLEX</a> <a href="/tags/RSS/" style="font-size: 10px;">RSS</a> <a href="/tags/Trello/" style="font-size: 10px;">Trello</a> <a href="/tags/Zerotier/" style="font-size: 10px;">Zerotier</a> <a href="/tags/iPhone/" style="font-size: 17.5px;">iPhone</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/产品/" style="font-size: 12.5px;">产品</a> <a href="/tags/兴趣/" style="font-size: 10px;">兴趣</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/团队/" style="font-size: 10px;">团队</a> <a href="/tags/基金/" style="font-size: 10px;">基金</a> <a href="/tags/学习/" style="font-size: 20px;">学习</a> <a href="/tags/工作/" style="font-size: 10px;">工作</a> <a href="/tags/广州/" style="font-size: 10px;">广州</a> <a href="/tags/微信/" style="font-size: 12.5px;">微信</a> <a href="/tags/微博/" style="font-size: 10px;">微博</a> <a href="/tags/思考/" style="font-size: 10px;">思考</a> <a href="/tags/情怀/" style="font-size: 10px;">情怀</a> <a href="/tags/手机/" style="font-size: 12.5px;">手机</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a> <a href="/tags/播客/" style="font-size: 10px;">播客</a> <a href="/tags/效率/" style="font-size: 10px;">效率</a> <a href="/tags/早餐/" style="font-size: 10px;">早餐</a> <a href="/tags/显示器/" style="font-size: 10px;">显示器</a> <a href="/tags/游玩/" style="font-size: 12.5px;">游玩</a> <a href="/tags/理财/" style="font-size: 10px;">理财</a> <a href="/tags/社交/" style="font-size: 12.5px;">社交</a> <a href="/tags/群晖/" style="font-size: 10px;">群晖</a> <a href="/tags/节日/" style="font-size: 10px;">节日</a> <a href="/tags/软件/" style="font-size: 15px;">软件</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/香港/" style="font-size: 10px;">香港</a> <a href="/tags/黑苹果/" style="font-size: 10px;">黑苹果</a>
     </div>
   </div>
 
@@ -797,7 +841,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li></ul>
     </div>
   </div>
 
